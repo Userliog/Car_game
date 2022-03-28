@@ -51,8 +51,8 @@ public class FWDHandeling : MonoBehaviour
 
     private void Engine()
     {
-        FLcollider.motorTorque = VerticalInput * EngineMax;
-        FRcollider.motorTorque = VerticalInput * EngineMax;
+        FLcollider.motorTorque = VerticalInput * ((EngineMax*5)/4);
+        FRcollider.motorTorque = VerticalInput * ((EngineMax*5)/4);
 
         currentBreakForce = isBreaking ? BrakeMax : 0f;
         if (isBreaking)
