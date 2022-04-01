@@ -51,8 +51,8 @@ public class AWDHandeling : MonoBehaviour
 
     private void Engine()
     {
-        FLcollider.motorTorque = VerticalInput * EngineMax;
-        FRcollider.motorTorque = VerticalInput * EngineMax;
+        //FLcollider.motorTorque = VerticalInput * EngineMax;
+        //FRcollider.motorTorque = VerticalInput * EngineMax;
         RLcollider.motorTorque = VerticalInput * EngineMax;
         RRcollider.motorTorque = VerticalInput * EngineMax;
 
@@ -69,10 +69,10 @@ public class AWDHandeling : MonoBehaviour
 
     private void ApplyBrake(float x)
     {
-        FLcollider.brakeTorque = x * 20;
-        FRcollider.brakeTorque = x * 20;
-        RLcollider.brakeTorque = x;
-        RRcollider.brakeTorque = x;
+        FLcollider.brakeTorque = x;
+        FRcollider.brakeTorque = x;
+        RLcollider.brakeTorque = x * 100;
+        RRcollider.brakeTorque = x * 100;
     }
 
     private void Steering()
@@ -95,7 +95,7 @@ public class AWDHandeling : MonoBehaviour
         Vector3 pos = WT.position;
         Quaternion rot = WT.rotation;
         WC.GetWorldPose(out pos, out rot);
-        //rot = rot * Quaternion.Euler(new Vector3(180, 90, 180));
+        rot = rot * Quaternion.Euler(new Vector3(180, 90, 180));
         WT.position = pos;
         WT.rotation = rot;
     }
