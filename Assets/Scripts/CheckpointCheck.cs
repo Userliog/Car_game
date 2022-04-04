@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class CheckpointCheck : MonoBehaviour
 {
+    private TrackCheckpoints trackCheckpoints;
+
     private void OnTriggerEnter(Collider other)
     {
         //Has to be a script attached to the car
         if (other.TryGetComponent<FWDHandeling>(out FWDHandeling player))
         {
-            Debug.Log("1!");
+            trackCheckpoints.ThroughChckpoint(this);
         }
+    }
+
+    public void SetTrackcheckpoints(Trackcheckpoints trackcheckpoints)
+    {
+        this.trackCheckpoints = trackcheckpoints;
     }
 }

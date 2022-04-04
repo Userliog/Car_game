@@ -6,6 +6,16 @@ public class TrackCheckpoints : MonoBehaviour
 {
     private void Awake()
     {
-        Transform checkpointsTransform = transform.Find("Checkpoints");
+        Transform Transform = transform.Find("Checkpoints");
+
+        foreach (Transform N in Transform)
+        {
+            CheckpointCheck checkpoint = N.GetComponent<Checkpoint>();
+            chechpoint.SetTrackCheckpoints(this);
+        }
+    }
+
+    public void ThroughCheckpoint(Checkpointcheck checkpoint) {
+        Debug.Log(checkpoint.transform.name);
     }
 }
