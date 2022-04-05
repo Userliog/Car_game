@@ -8,15 +8,15 @@ public class CheckpointCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Has to be a script attached to the car
+        //Has to be the handeling script attached to the car
         if (other.TryGetComponent<FWDHandeling>(out FWDHandeling player))
         {
-            trackCheckpoints.ThroughChckpoint(this);
+            trackCheckpoints.ThroughCheckpoint(this);
         }
     }
 
-    public void SetTrackcheckpoints(Trackcheckpoints trackcheckpoints)
+    public void SetTrackCheckpoints(TrackCheckpoints Checkpoints)
     {
-        this.trackCheckpoints = trackcheckpoints;
+        this.trackCheckpoints = Checkpoints;
     }
 }

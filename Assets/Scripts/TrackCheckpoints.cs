@@ -4,18 +4,39 @@ using UnityEngine;
 
 public class TrackCheckpoints : MonoBehaviour
 {
+    public event EventHandler OnCorrectCheckpoint;
+    public event EventHandler OnWrongCheckpoint;
+    private List<CheckpointCheck> checkpointList;
+    private int nextCheckpointIndex;
     private void Awake()
     {
-        Transform Transform = transform.Find("Checkpoints");
+        Transform checkpointsTransform = transform.Find("Checkpoints");
 
-        foreach (Transform N in Transform)
+        checkpointList = new List<CheckpointCheck>();
+        foreach (Transform checkpointTransform in checkpointsTransform)
         {
-            CheckpointCheck checkpoint = N.GetComponent<Checkpoint>();
-            chechpoint.SetTrackCheckpoints(this);
+            CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();
+            checkpoint.SetTrackCheckpoints(this);
+            checkpointList.Add(checkpoint);
         }
+
+        nextCheckpointIndex = 0;
     }
 
-    public void ThroughCheckpoint(Checkpointcheck checkpoint) {
-        Debug.Log(checkpoint.transform.name);
+    public void ThroughCheckpoint(CheckpointCheck checkpoint)
+    {
+        Debug.Log(checkpointList.IndexOf(checkpoint));
+        if (checkpointList.IndexOf(checkpoint) == nextCheckpointIndex)
+        {
+            Debug.Log("Correct");
+            nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
+            OnCorrectCheckpoint?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            Debug.Log("False");
+            OnWrongCheckpoint?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }
