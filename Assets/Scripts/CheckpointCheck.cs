@@ -5,6 +5,16 @@ using UnityEngine;
 public class CheckpointCheck : MonoBehaviour
 {
     private TrackCheckpoints trackCheckpoints;
+    private MeshRenderer meshRenderer;
+
+    private void Awake()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+    private void Start()
+    {
+        Hide();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,5 +28,13 @@ public class CheckpointCheck : MonoBehaviour
     public void SetTrackCheckpoints(TrackCheckpoints Checkpoints)
     {
         this.trackCheckpoints = Checkpoints;
+    }
+    public void Show()
+    {
+        meshRenderer.enabled = true;
+    }
+    public void Hide()
+    {
+        meshRenderer.enabled = false;
     }
 }

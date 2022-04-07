@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,17 +26,22 @@ public class TrackCheckpoints : MonoBehaviour
 
     public void ThroughCheckpoint(CheckpointCheck checkpoint)
     {
-        Debug.Log(checkpointList.IndexOf(checkpoint));
         if (checkpointList.IndexOf(checkpoint) == nextCheckpointIndex)
         {
+            CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
+            correctCheckpoint.Hide();
             Debug.Log("Correct");
             nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
             OnCorrectCheckpoint?.Invoke(this, EventArgs.Empty);
+            
         }
         else
         {
-            Debug.Log("False");
+            Debug.Log("Wrong");
             OnWrongCheckpoint?.Invoke(this, EventArgs.Empty);
+
+            CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
+            correctCheckpoint.Show();
         }
 
     }

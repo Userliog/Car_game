@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FWDHandeling : MonoBehaviour
+public class RWDHandelning : MonoBehaviour
 {
     private float HorizontalInput;
     private float VerticalInput;
@@ -10,7 +10,7 @@ public class FWDHandeling : MonoBehaviour
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
-    public double speed;
+    private double speed;
 
     [SerializeField] private float EngineMax;
     [SerializeField] private float BrakeMax;
@@ -53,12 +53,12 @@ public class FWDHandeling : MonoBehaviour
 
     private void Engine()
     {
-        speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60/500;
-        
+        speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60 / 500;
+
         if (speed < MaxSpeed)
         {
-            FLcollider.motorTorque = VerticalInput * ((EngineMax * 5) / 4);
-            FRcollider.motorTorque = VerticalInput * ((EngineMax * 5) / 4);
+            RLcollider.motorTorque = VerticalInput * ((EngineMax * 5) / 4);
+            RRcollider.motorTorque = VerticalInput * ((EngineMax * 5) / 4);
         }
         else
         {
@@ -82,8 +82,8 @@ public class FWDHandeling : MonoBehaviour
     {
         FLcollider.brakeTorque = x;
         FRcollider.brakeTorque = x;
-        RLcollider.brakeTorque = x*10;
-        RRcollider.brakeTorque = x*10;
+        RLcollider.brakeTorque = x * 10;
+        RRcollider.brakeTorque = x * 10;
     }
 
     private void Steering()
@@ -106,7 +106,7 @@ public class FWDHandeling : MonoBehaviour
         Vector3 pos = WT.position;
         Quaternion rot = WT.rotation;
         WC.GetWorldPose(out pos, out rot);
-        rot = rot * Quaternion.Euler(new Vector3(180, 90, 180));
+        rot = rot * Quaternion.Euler(new Vector3(0, 0, 0));
         WT.position = pos;
         WT.rotation = rot;
     }
