@@ -9,6 +9,7 @@ public class TrackCheckpoints : MonoBehaviour
     public event EventHandler OnWrongCheckpoint;
     private List<CheckpointCheck> checkpointList;
     private int nextCheckpointIndex;
+    
     private void Awake()
     {
         Transform checkpointsTransform = transform.Find("Checkpoints");
@@ -16,6 +17,7 @@ public class TrackCheckpoints : MonoBehaviour
         checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
+            Debug.Log(checkpointTransform);
             CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();
             checkpoint.SetTrackCheckpoints(this);
             checkpointList.Add(checkpoint);

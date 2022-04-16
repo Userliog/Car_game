@@ -40,6 +40,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     {
         RB = GetComponent<Rigidbody>();
         RB.centerOfMass = com.transform.localPosition;
+
         Transform[] pathTransforms = checkpoints.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
         for(int i= 0; i < pathTransforms.Length; i++)
@@ -58,7 +59,10 @@ public class FWDHandelingOpponent : MonoBehaviour
         CheckpointDistance();
         UpdateWheels();
         LerpSteer();
-        print(currentNode);
+        print("0: " + nodes[0].position);
+        print("1: " + nodes[1].position);
+        print("2: " + nodes[2].position);
+        print("3: " + nodes[3].position);
     }
 
     private void Engine()
@@ -66,7 +70,6 @@ public class FWDHandelingOpponent : MonoBehaviour
         //        Math.PI
         speed =  3.14* FRcollider.radius * FRcollider.rpm * 60/500;
 
-        Debug.Log(speed);
         if(speed < MaxSpeed)
         {
             FLcollider.motorTorque = ((EngineMax * 5) / 4);
@@ -90,7 +93,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     }
     private void CheckpointDistance()
     {
-        if (Vector3.Distance(transform.position, nodes[currentNode].position) < 7f)
+        if (Vector3.Distance(transform.position, nodes[currentNode].position) < 2f)
         {
             if(currentNode == nodes.Count - 1)
             {

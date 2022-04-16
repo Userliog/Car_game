@@ -65,7 +65,7 @@ public class RWDHandelning : MonoBehaviour
             FLcollider.motorTorque = 0;
             FRcollider.motorTorque = 0;
         }
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         currentBreakForce = isBreaking ? BrakeMax : 0f;
         if (isBreaking)
