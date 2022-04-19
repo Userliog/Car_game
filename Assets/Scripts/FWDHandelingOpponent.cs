@@ -43,9 +43,10 @@ public class FWDHandelingOpponent : MonoBehaviour
 
         Transform[] pathTransforms = checkpoints.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
-        for(int i= 0; i < pathTransforms.Length; i++)
+        //0 --> 1
+        for (int i = 1; i < pathTransforms.Length; i++)
         {
-            if(pathTransforms[i] != transform)
+            if (pathTransforms[i] != transform)
             {
                 nodes.Add(pathTransforms[i]);
             }
@@ -59,27 +60,24 @@ public class FWDHandelingOpponent : MonoBehaviour
         CheckpointDistance();
         UpdateWheels();
         LerpSteer();
-        print("0: " + nodes[0].position);
-        print("1: " + nodes[1].position);
-        print("2: " + nodes[2].position);
-        print("3: " + nodes[3].position);
     }
 
     private void Engine()
     {
         //        Math.PI
-        speed =  3.14* FRcollider.radius * FRcollider.rpm * 60/500;
+        speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60 / 500;
 
-        if(speed < MaxSpeed)
+        if (speed < MaxSpeed)
         {
             FLcollider.motorTorque = ((EngineMax * 5) / 4);
             FRcollider.motorTorque = ((EngineMax * 5) / 4);
         }
-        else {
+        else
+        {
             FLcollider.motorTorque = 0;
             FRcollider.motorTorque = 0;
         }
-        
+
 
         currentBreakForce = isBreaking ? BrakeMax : 0f;
         if (isBreaking)
@@ -95,7 +93,8 @@ public class FWDHandelingOpponent : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, nodes[currentNode].position) < 2f)
         {
-            if(currentNode == nodes.Count - 1)
+            ApplyBrake(5);
+            if (currentNode == nodes.Count - 1)
             {
                 currentNode = 0;
             }
@@ -112,13 +111,16 @@ public class FWDHandelingOpponent : MonoBehaviour
         FRcollider.brakeTorque = x;
         RLcollider.brakeTorque = x;
         RRcollider.brakeTorque = x;
+
+        System.Threading.Thread.Sleep(2300);
+        ApplyBrake(0);
     }
 
     private void Steering()
     {
         Vector3 relativeVector = transform.InverseTransformPoint(nodes[currentNode].position);
         float currentSteerAngle = (relativeVector.x / relativeVector.magnitude) * MaxSteerAngle;
-        targetSteerAngle=currentSteerAngle;
+        targetSteerAngle = currentSteerAngle;
     }
 
     private void UpdateWheels()

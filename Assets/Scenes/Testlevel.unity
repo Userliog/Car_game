@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2648,8 +2648,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690920448}
-  m_LocalRotation: {x: 0.06718701, y: 0.009949396, z: -0.0006700174, w: 0.9976906}
-  m_LocalPosition: {x: 85.90101, y: 1.6121248, z: 87.03724}
+  m_LocalRotation: {x: 0.06606577, y: -0.18177494, z: 0.012241174, w: 0.98104197}
+  m_LocalPosition: {x: 85.77839, y: 1.669965, z: 87.35676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3253,7 +3253,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834766624}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eaa41f25c7e66b49b3c1c1824989378, type: 3}
   m_Name: 
@@ -4035,7 +4035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112921005}
-  m_LocalRotation: {x: 0.059338942, y: 0.009954379, z: -0.00059175445, w: 0.99818814}
+  m_LocalRotation: {x: 0.058348663, y: -0.18186556, z: 0.010811283, w: 0.9815312}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4508,7 +4508,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326067413}
-  m_LocalRotation: {x: 0.09255321, y: 0.010133232, z: -0.000941955, w: 0.9956558}
+  m_LocalRotation: {x: 0.09082341, y: -0.18500637, z: 0.017174203, w: 0.97838074}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4811,7 +4811,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433687452}
-  m_LocalRotation: {x: 0.07503093, y: 0.009943803, z: -0.0007482393, w: 0.99713135}
+  m_LocalRotation: {x: 0.0737788, y: -0.18167304, z: 0.013670298, w: 0.9804921}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6023,8 +6023,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 834766628}
-  m_Follow: {fileID: 834766628}
+  m_LookAt: {fileID: 111238969898394384}
+  m_Follow: {fileID: 111238969898394384}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 35
@@ -6121,7 +6121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833912348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 85.90101, y: 1.6121248, z: 87.03724}
+  m_LocalPosition: {x: 85.77839, y: 1.669965, z: 87.35676}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1326067415}
@@ -6816,6 +6816,7 @@ GameObject:
   - component: {fileID: 111238969898394384}
   - component: {fileID: 774869740526582188}
   - component: {fileID: 774869740526582187}
+  - component: {fileID: 774869740526582189}
   m_Layer: 0
   m_Name: Caspian GT
   m_TagString: Player
@@ -6852,6 +6853,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &774869740526582189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774869740526582186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529761b084073c44c9eb0aae8dc7ae9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EngineMax: 1000
+  BrakeMax: 5000
+  MaxSteerAngle: 35
+  MaxSpeed: 250
+  FLcollider: {fileID: 761578499}
+  FRcollider: {fileID: 1663767782}
+  RLcollider: {fileID: 1588395722}
+  RRcollider: {fileID: 925742448}
+  FL: {fileID: 8870314656591129275}
+  FR: {fileID: 33967239363832607}
+  RL: {fileID: 7285570854654213932}
+  RR: {fileID: 4183218325984756514}
+  com: {fileID: 1319750866}
 --- !u!1 &1067459795156426899
 GameObject:
   m_ObjectHideFlags: 0

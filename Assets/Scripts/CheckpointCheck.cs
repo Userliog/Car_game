@@ -6,7 +6,7 @@ public class CheckpointCheck : MonoBehaviour
 {
     private TrackCheckpoints trackCheckpoints;
     private MeshRenderer meshRenderer;
-    [SerializeField] private Transform playerScript;
+    //[SerializeField] private Transform playerScript;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class CheckpointCheck : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Has to be the handeling script attached to the car
-        if (other.TryGetComponent<playerScript>(out playerScript player))
+        if (other.TryGetComponent<FWDHandelingOpponent>(out FWDHandelingOpponent player))
         {
             trackCheckpoints.ThroughCheckpoint(this);
         }
