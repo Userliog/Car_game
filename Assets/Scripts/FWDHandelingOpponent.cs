@@ -93,7 +93,6 @@ public class FWDHandelingOpponent : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, nodes[currentNode].position) < 2f)
         {
-            ApplyBrake(5);
             if (currentNode == nodes.Count - 1)
             {
                 currentNode = 0;
@@ -111,9 +110,6 @@ public class FWDHandelingOpponent : MonoBehaviour
         FRcollider.brakeTorque = x;
         RLcollider.brakeTorque = x;
         RRcollider.brakeTorque = x;
-
-        System.Threading.Thread.Sleep(2300);
-        ApplyBrake(0);
     }
 
     private void Steering()
