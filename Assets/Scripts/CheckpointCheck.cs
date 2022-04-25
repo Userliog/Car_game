@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckpointCheck : MonoBehaviour
 {
     private TrackCheckpoints trackCheckpoints;
     private MeshRenderer meshRenderer;
-    //[SerializeField] private Transform playerScript;
 
     private void Awake()
     {
@@ -17,10 +17,9 @@ public class CheckpointCheck : MonoBehaviour
         Hide();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        //Has to be the handeling script attached to the car
-        if (other.TryGetComponent<FWDHandelingOpponent>(out FWDHandelingOpponent player))
+        if (collider.gameObject.tag == "Player")
         {
             trackCheckpoints.ThroughCheckpoint(this);
         }

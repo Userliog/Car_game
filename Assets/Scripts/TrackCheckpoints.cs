@@ -17,7 +17,6 @@ public class TrackCheckpoints : MonoBehaviour
         checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
-            Debug.Log(checkpointTransform);
             CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();
             checkpoint.SetTrackCheckpoints(this);
             checkpointList.Add(checkpoint);
@@ -32,14 +31,12 @@ public class TrackCheckpoints : MonoBehaviour
         {
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Hide();
-            //Debug.Log("Correct");
             nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
             OnCorrectCheckpoint?.Invoke(this, EventArgs.Empty);
 
         }
         else
         {
-            Debug.Log("Wrong");
             OnWrongCheckpoint?.Invoke(this, EventArgs.Empty);
 
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
