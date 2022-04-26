@@ -6797,6 +6797,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1613677454}
     m_Modifications:
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
       value: 2
       objectReference: {fileID: 0}
@@ -6806,7 +6818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumSlip
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteSlip
@@ -6814,11 +6826,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumValue
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.targetPosition
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteValue
@@ -6835,6 +6851,18 @@ PrefabInstance:
     - target: {fileID: 3152371282285983780, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_SidewaysFriction.m_AsymptoteValue
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
@@ -6861,6 +6889,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.targetPosition
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteValue
       value: 6
       objectReference: {fileID: 0}
@@ -6875,6 +6907,18 @@ PrefabInstance:
     - target: {fileID: 3152371282453462054, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_SidewaysFriction.m_AsymptoteValue
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
@@ -6901,6 +6945,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.targetPosition
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371282678818395, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteValue
       value: 6
       objectReference: {fileID: 0}
@@ -6917,6 +6965,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
       value: 2
       objectReference: {fileID: 0}
@@ -6926,7 +6986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumSlip
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteSlip
@@ -6934,11 +6994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumValue
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+      propertyPath: m_SuspensionSpring.targetPosition
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3152371283163002544, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: m_ForwardFriction.m_AsymptoteValue
@@ -6962,7 +7026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5857716401984656080, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: EngineMax
-      value: 700
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5857716401984656080, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
       propertyPath: turnSpeed
@@ -19490,26 +19554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529761b084073c44c9eb0aae8dc7ae9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalInput: 0
-  VerticalInput: 0
-  currentSteerAngle: 0
-  currentBreakForce: 0
-  isBreaking: 0
-  speed: 0
-  EngineMax: 800
-  BrakeMax: 5000
-  MaxSteerAngle: 40
-  MaxSpeed: 250
-  FLcollider: {fileID: 1809234444}
-  FRcollider: {fileID: 927726271}
-  RLcollider: {fileID: 1972422308}
-  RRcollider: {fileID: 2077542296}
-  FL: {fileID: 9014018508409759717}
-  FR: {fileID: 466447174604514881}
-  RL: {fileID: 7141026939444867698}
-  RR: {fileID: 4326917844181225084}
-  RB: {fileID: 0}
-  com: {fileID: 1783237601}
 --- !u!65 &919132148546958582
 BoxCollider:
   m_ObjectHideFlags: 0
