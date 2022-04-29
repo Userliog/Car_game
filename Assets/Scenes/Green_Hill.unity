@@ -9017,7 +9017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934409830
 Transform:
   m_ObjectHideFlags: 0
@@ -9456,7 +9456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &963194226
 AudioListener:
   m_ObjectHideFlags: 0
@@ -19645,6 +19645,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529761b084073c44c9eb0aae8dc7ae9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EngineMax: 0
+  BrakeMax: 0
+  MaxSteerAngle: 0
+  MaxSpeed: 0
+  FLcollider: {fileID: 0}
+  FRcollider: {fileID: 0}
+  RLcollider: {fileID: 0}
+  RRcollider: {fileID: 0}
+  FL: {fileID: 0}
+  FR: {fileID: 0}
+  RL: {fileID: 0}
+  RR: {fileID: 0}
+  com: {fileID: 0}
 --- !u!65 &919132148546958582
 BoxCollider:
   m_ObjectHideFlags: 0

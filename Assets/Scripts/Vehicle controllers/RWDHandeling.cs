@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class RWDHandeling : MonoBehaviour
 {
     private float HorizontalInput;
     private float VerticalInput;
