@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,5 +15,8 @@ public class MapDisplay : MonoBehaviour
         mapName.text = map.mapName;
         mapdescription.text = map.mapDescrition;
         mapImage.sprite = map.mapImage;
+
+        playButton.onClick.RemoveAllListeners()
+        playButton.onClick.AddListener(() => SceneManager.LoadScen(map.scenToLoad.name));
     }
 }

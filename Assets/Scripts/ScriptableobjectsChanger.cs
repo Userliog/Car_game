@@ -4,11 +4,37 @@ using UnityEngine;
 
 public class ScriptableobjectsChanger : MonoBehaviour
 {
-    [SerializeField] private ScriptableObject[] serializableObjects;
+    [Header ("Scriptable Objects")]
+    [SerializeField] private ScriptableObject[] ScriptableObjects;
+
+    [Header("Display Scripts")]
     [SerializeField] private MapDisplay mapDisplay;
+    [SerializeField] private CarDisplay carDisplay;
+    private int currentIndex;
 
     private void Awake()
     {
-        mapDisplay.DisplayMap((Map)serializableObjects[0]);
+        ChangeScriptableobject(0); 
+    }
+    private void ChangeScriptableobject(int change)
+    {
+        currentIndex += change;
+        if (currentIndex < 0)
+        {
+            currentIndex = ScriptableObjects.Length - 1;
+        }
+        else if(currentIndex > ScriptableObjects.Length-1)
+        {
+            currentIndex = 0;
+        }
+
+        if (mapDisplay != null)
+        {
+            mapDisplay.DisplayMap((Map)ScriptableObjects[currentIndex]);
+        }
+        if (carDisplay != null)
+        {
+            carDisplay.DisplayCar((Car)ScriptableObjects[currentIndex]);
+        }
     }
 }
