@@ -9,6 +9,7 @@ public class MapDisplay : MonoBehaviour
     [SerializeField] private Text mapName;
     [SerializeField] private Text mapdescription;
     [SerializeField] private Image mapImage;
+    [SerializeField] private Button playButton;
 
     public void DisplayMap(Map map)
     {
@@ -16,7 +17,7 @@ public class MapDisplay : MonoBehaviour
         mapdescription.text = map.mapDescrition;
         mapImage.sprite = map.mapImage;
 
-        playButton.onClick.RemoveAllListeners()
-        playButton.onClick.AddListener(() => SceneManager.LoadScen(map.scenToLoad.name));
+        playButton.onClick.RemoveAllListeners();
+        playButton.onClick.AddListener(() => SceneManager.LoadScene(map.sceneToLoad.name));
     }
 }

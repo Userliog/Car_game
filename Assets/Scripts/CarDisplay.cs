@@ -8,29 +8,31 @@ public class CarDisplay : MonoBehaviour
 {
     [Header("Description")]
     [SerializeField] public Text carName;
-    [SerializeField] public Text carDescrition;
+    [SerializeField] public Text carDescription;
 
     [Header("Values")]
     [SerializeField] public Text carPrice;
 
-    [SerializeField] public bool owned;
+    [SerializeField] public bool carOwned;
 
     [Header("3D Model")]
     [SerializeField] public Transform carModel;
-    
-    public void Displaycar(Car car)
+
+    [SerializeField] private Button playButton;
+
+    public void DisplayCar(Car car)
     {
         carName.text = car.carName;
-        cardescription.text = car.carDescrition;
+        carDescription.text = car.carDescrition;
         carPrice.text = car.carPrice + " $";
-        carOwned = car.carOwned
+        //carOwned = car.carOwned;
 
-            if (carHolder.childCount > 0)
-            {
-                Destroy(carHolder.GetChild(0).gameObject);
-            }
-            
-        playButton.onClick.RemoveAllListeners()
-        playButton.onClick.AddListener(() => SceneManager.LoadScen(map.scenToLoad.name));
+        if (carModel.childCount > 0)
+        {
+            Destroy(carModel.GetChild(0).gameObject);
+        }
+
+        playButton.onClick.RemoveAllListeners();
+        //playButton.onClick.AddListener(() => SceneManager.LoadScene(map.sceneToLoad.name));
     }
 }
