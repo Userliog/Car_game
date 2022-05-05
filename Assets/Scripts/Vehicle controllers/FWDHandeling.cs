@@ -106,7 +106,7 @@ public class FWDHandeling : MonoBehaviour
         Vector3 pos = WT.position;
         Quaternion rot = WT.rotation;
         WC.GetWorldPose(out pos, out rot);
-        rot = rot * Quaternion.Euler(new Vector3(180, 90, 180));
+        rot = rot * Quaternion.Euler(new Vector3(0, 0, 0));
         WT.position = pos;
         WT.rotation = rot;
     }
