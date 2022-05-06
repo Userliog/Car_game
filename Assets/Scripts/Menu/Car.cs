@@ -5,7 +5,7 @@ public class Car : ScriptableObject
 {
     [Header("Description")]
     public string carName;
-    public string carDescrition;
+    public string carDescription;
 
     [Header("Values")]
     public int carPrice;
