@@ -25,7 +25,6 @@ public class CarDisplay : MonoBehaviour
         carName.text = car.carName;
         carDescription.text = car.carDescrition;
         carPrice.text = car.carPrice + " $";
-        //carOwned = car.carOwned;
 
         if (carContainer.childCount > 0)
         {
