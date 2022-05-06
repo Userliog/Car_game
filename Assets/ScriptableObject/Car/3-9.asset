@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edf713337acf8247a7a076ea49435df, type: 3}
+  m_Name: 3-9
+  m_EditorClassIdentifier: 
+  carName: Saad 9-3
+  carDescrition: A sporty yet stylish hatchback from the 90's
+  carPrice: 2500
+  owned: 0
+  carModel: {fileID: 6799893831757593478, guid: e13d5999de56b7b42b8815da330ae366, type: 3}
