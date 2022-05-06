@@ -16,7 +16,7 @@ public class ScriptableObjectChanger : MonoBehaviour
     {
         ChangeScriptableObject(0);
     }
-    private void ChangeScriptableObject(int change)
+    public void ChangeScriptableObject(int change)
     {
         currentIndex += change;
         if (currentIndex < 0)
