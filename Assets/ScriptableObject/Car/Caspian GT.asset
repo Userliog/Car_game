@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edf713337acf8247a7a076ea49435df, type: 3}
   m_Name: Caspian GT
   m_EditorClassIdentifier: 
-  carName: Caspian GT
-  carDescrition: A popular musclecar from america
+  carName: Fjord Caspian GT
+  carDescription: A popular musclecar from america
   carPrice: 30000
   owned: 0
-  carModel: {fileID: 919132149155446097, guid: 551c53dce0424b04c9569c1bc55560bf, type: 3}
+  carModel: {fileID: 7957082369207349718, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}

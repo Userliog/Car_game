@@ -34,6 +34,7 @@ public class ScriptableObjectChanger : MonoBehaviour
         }
         if (carDisplay != null)
         {
+            PlayerPrefs.SetInt("CarToLoad", currentIndex);
             carDisplay.DisplayCar((Car)ScriptableObjects[currentIndex]);
         }
     }

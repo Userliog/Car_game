@@ -15,15 +15,16 @@ public class CarDisplay : MonoBehaviour
 
     [SerializeField] public bool carOwned;
 
-    [Header("3D Model")]
+    [Header("Spawnpoint")]
     [SerializeField] public Transform carContainer;
 
+    [Header("Stuff")]
     [SerializeField] private Button playButton;
 
     public void DisplayCar(Car car)
     {
         carName.text = car.carName;
-        carDescription.text = car.carDescrition;
+        carDescription.text = car.carDescription;
         carPrice.text = car.carPrice + " $";
 
         if (carContainer.childCount > 0)
@@ -32,8 +33,8 @@ public class CarDisplay : MonoBehaviour
         }
 
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
-
+        
         playButton.onClick.RemoveAllListeners();
-        //playButton.onClick.AddListener(() => SceneManager.LoadScene(map.sceneToLoad.name));
+        playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));
     }
 }

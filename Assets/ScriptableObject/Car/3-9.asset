@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edf713337acf8247a7a076ea49435df, type: 3}
   m_Name: 3-9
   m_EditorClassIdentifier: 
-  carName: Saad 9-3
-  carDescrition: A sporty yet stylish hatchback from the 90's
+  carName: Saad 3-9
+  carDescription: A sporty yet stylish hatchback from the 90's
   carPrice: 2500
   owned: 0
-  carModel: {fileID: 6799893831757593478, guid: e13d5999de56b7b42b8815da330ae366, type: 3}
+  carModel: {fileID: 4016823376418979632, guid: 9692a1af39516864fadebf3ef7f7ff8e, type: 3}

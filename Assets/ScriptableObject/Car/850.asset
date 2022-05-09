@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edf713337acf8247a7a076ea49435df, type: 3}
   m_Name: 850
   m_EditorClassIdentifier: 
-  carName: 850
-  carDescrition: A family grand tourer from the 90's
+  carName: Volvent 580
+  carDescription: A family grand tourer from the 90's
   carPrice: 5000
   owned: 0
-  carModel: {fileID: 919132149155446097, guid: 0a521c105d9c76a429477f3808ebef61, type: 3}
+  carModel: {fileID: 7981218520527559233, guid: b5bce73916ad1ad46af3233e6194da89, type: 3}

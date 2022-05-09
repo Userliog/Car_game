@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edf713337acf8247a7a076ea49435df, type: 3}
   m_Name: evo 9
   m_EditorClassIdentifier: 
-  carName: evo 9
-  carDescrition: A Japaniese pocket rocket with AWD
+  carName: Mutshibishu Reo 9
+  carDescription: A Japaniese pocket rocket with AWD
   carPrice: 35000
   owned: 0
-  carModel: {fileID: 5857716401984656095, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+  carModel: {fileID: 5260722982728742190, guid: 758abd9b08b77e44791265f6629429b1, type: 3}

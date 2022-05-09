@@ -12,12 +12,14 @@ public class AWDHandeling : MonoBehaviour
     private bool isBreaking;
     private double speed;
 
+    [Header("Constant values")]
     [SerializeField] private float EngineMax;
     [SerializeField] private float BrakeMax;
     [SerializeField] private float MaxSteerAngle;
     [SerializeField] private float MaxSpeed;
     [SerializeField] private float turnSpeed;
 
+    [Header("Wheel colliders")]
     [SerializeField] private WheelCollider FLcollider;
     [SerializeField] private WheelCollider FRcollider;
     [SerializeField] private WheelCollider RLcollider;
@@ -29,6 +31,7 @@ public class AWDHandeling : MonoBehaviour
     [SerializeField] private Transform RR;
 
     private Rigidbody RB;
+    [Header("Center of mass")]
     [SerializeField] public Transform com;
 
     void Start()
@@ -43,7 +46,6 @@ public class AWDHandeling : MonoBehaviour
         Engine();
         Steering();
         UpdateWheels();
-        LerpSteer();
     }
 
     private void GetInput()
@@ -59,11 +61,11 @@ public class AWDHandeling : MonoBehaviour
 
         if (speed < MaxSpeed)
         {
-            ApplyThrothel(VerticalInput * ((EngineMax * 5) / 4));
+            ApplyThrottle(VerticalInput * ((EngineMax * 5) / 4));
         }
         else
         {
-            ApplyThrothel(0);
+            ApplyThrottle(0);
         }
 
         currentBreakForce = isBreaking ? BrakeMax : 0f;
@@ -76,20 +78,20 @@ public class AWDHandeling : MonoBehaviour
             ApplyBrake(0);
         }
     }
-    private void ApplyThrothel(float amout)
+    private void ApplyThrottle(float throttle)
     {
-        FLcollider.motorTorque = amout;
-        FRcollider.motorTorque = amout;
-        RLcollider.motorTorque = amout;
-        RRcollider.motorTorque = amout;
+        FLcollider.motorTorque = throttle;
+        FRcollider.motorTorque = throttle;
+        RLcollider.motorTorque = throttle;
+        RRcollider.motorTorque = throttle;
     }
 
-    private void ApplyBrake(float x)
+    private void ApplyBrake(float brake)
     {
-        FLcollider.brakeTorque = x;
-        FRcollider.brakeTorque = x;
-        RLcollider.brakeTorque = x * 100;
-        RRcollider.brakeTorque = x * 100;
+        FLcollider.brakeTorque = brake;
+        FRcollider.brakeTorque = brake;
+        RLcollider.brakeTorque = brake * 100;
+        RRcollider.brakeTorque = brake * 100;
     }
 
     private void Steering()
@@ -97,8 +99,6 @@ public class AWDHandeling : MonoBehaviour
         currentSteerAngle = MaxSteerAngle * HorizontalInput;
         FLcollider.steerAngle = Mathf.Lerp(FLcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
         FRcollider.steerAngle = Mathf.Lerp(FRcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
-        //FLcollider.steerAngle = currentSteerAngle;
-        //FRcollider.steerAngle = currentSteerAngle;
     }
 
     private void UpdateWheels()
@@ -109,17 +109,13 @@ public class AWDHandeling : MonoBehaviour
         UpdateSingelWheel(RRcollider, RR);
     }
 
-    private void UpdateSingelWheel(WheelCollider WC, Transform WT)
+    private void UpdateSingelWheel(WheelCollider WheelCollider, Transform WheelTransform)
     {
-        Vector3 pos = WT.position;
-        Quaternion rot = WT.rotation;
-        WC.GetWorldPose(out pos, out rot);
-        rot = rot * Quaternion.Euler(new Vector3(0, 0, 0));
-        WT.position = pos;
-        WT.rotation = rot;
-    }
-    private void LerpSteer()
-    {
-        
+        Vector3 pos = WheelTransform.position;
+        Quaternion rot = WheelTransform.rotation;
+        WheelCollider.GetWorldPose(out pos, out rot);
+        rot = rot * Quaternion.Euler(new Vector3());
+        WheelTransform.position = pos;
+        WheelTransform.rotation = rot;
     }
 }
