@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 2055807227}
   m_IndirectSpecularColor: {r: 0.5019536, g: 0.5019536, b: 0.5019536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -9106,7 +9106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4016823376418979632, guid: 9692a1af39516864fadebf3ef7f7ff8e, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Opponent
       objectReference: {fileID: 0}
     - target: {fileID: 4016823376418979633, guid: 9692a1af39516864fadebf3ef7f7ff8e, type: 3}
       propertyPath: m_Enabled
@@ -17511,7 +17511,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -17569,7 +17569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055807226}
   m_LocalRotation: {x: 0.4153578, y: -0.16726817, z: 0.077998675, w: 0.8907387}
-  m_LocalPosition: {x: -2178, y: 42.5, z: 97.2}
+  m_LocalPosition: {x: -1846, y: 357, z: -757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
