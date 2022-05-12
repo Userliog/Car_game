@@ -16,4 +16,5 @@ MonoBehaviour:
   carDescription: A Japaniese pocket rocket with AWD
   carPrice: 35000
   owned: 0
-  carModel: {fileID: 5260722982728742190, guid: 758abd9b08b77e44791265f6629429b1, type: 3}
+  carModel: {fileID: 8205383958955468083, guid: 00a7d77fd1de32a44b41a08116951491, type: 3}
+  carPaint: {fileID: 2100000, guid: ba133aa4ae6254c40a6c35878eb1807d, type: 2}

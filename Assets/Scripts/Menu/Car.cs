@@ -14,4 +14,7 @@ public class Car : ScriptableObject
 
     [Header("3D Model")]
     public GameObject carModel;
+
+    [Header("3D Model")]
+    public Material carPaint;
 }
