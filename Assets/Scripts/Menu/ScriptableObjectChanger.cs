@@ -16,6 +16,10 @@ public class ScriptableObjectChanger : MonoBehaviour
     {
         ChangeScriptableObject(0);
     }
+
+    /// <summary>
+    ///  This class is used by the buttons on screen to change the scriptable object of either the mapDisplay or carDisplay script
+    /// </summary>
     public void ChangeScriptableObject(int change)
     {
         currentIndex += change;
@@ -27,6 +31,7 @@ public class ScriptableObjectChanger : MonoBehaviour
         {
             currentIndex = 0;
         }
+        //Here it gets the scriptableObject based on the button clicks of the player
 
         if (mapDisplay != null)
         {
@@ -35,7 +40,9 @@ public class ScriptableObjectChanger : MonoBehaviour
         if (carDisplay != null)
         {
             PlayerPrefs.SetInt("CarToLoad", currentIndex);
+            //this saves the current car as a PlayerPrefs, witch can be saved and loaded in a diffrent unity scene
             carDisplay.DisplayCar((Car)ScriptableObjects[currentIndex]);
         }
+        //This part checks if one of the scripts are avalible, and if they are they send the current scriptableObject is sent to a class in that script.
     }
 }

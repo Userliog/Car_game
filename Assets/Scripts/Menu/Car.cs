@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Car", menuName = "Scriptable Object/Car")]
+
 public class Car : ScriptableObject
 {
+    //Scriptable objects are used when 
     [Header("Description")]
     public string carName;
     public string carDescription;

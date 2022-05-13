@@ -8,8 +8,8 @@ public class AWDHandeling : MonoBehaviour
     private float VerticalInput;
 
     private float currentSteerAngle;
-    private float currentBreakForce;
-    private bool isBreaking;
+    private float currentBrakForce;
+    private bool isBraking;
     private double speed;
 
     [Header("Constant values")]
@@ -30,8 +30,9 @@ public class AWDHandeling : MonoBehaviour
     [SerializeField] private Transform RL;
     [SerializeField] private Transform RR;
 
-    private Rigidbody RB;
+
     [Header("Center of mass")]
+    private Rigidbody RB;
     [SerializeField] public Transform com;
 
     void Start()
@@ -48,17 +49,23 @@ public class AWDHandeling : MonoBehaviour
         UpdateWheels();
     }
 
+    /// <summary>
+    ///  This class gets inputs from the player and saves them as variables.
+    /// </summary>
     private void GetInput()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
         VerticalInput = Input.GetAxis("Vertical");
-        isBreaking = Input.GetKey(KeyCode.Space);
+        isBraking = Input.GetKey(KeyCode.Space);
     }
 
+    /// <summary>
+    ///  This class applies acceleration or braking depending on the inputs from the player. 
+    /// </summary>
     private void Engine()
     {
         speed = (3.14 * FRcollider.radius * FRcollider.rpm * 60) / 500;
-
+        //Here is the wheelspeed of the car is calculated.
         if (speed < MaxSpeed)
         {
             ApplyThrottle(VerticalInput * ((EngineMax * 5) / 4));
@@ -68,16 +75,20 @@ public class AWDHandeling : MonoBehaviour
             ApplyThrottle(0);
         }
 
-        currentBreakForce = isBreaking ? BrakeMax : 0f;
-        if (isBreaking)
+        currentBrakForce = isBraking ? BrakeMax : 0f;
+        if (isBraking)
         {
-            ApplyBrake(currentBreakForce);
+            ApplyBrake(currentBrakForce);
         }
         else
         {
             ApplyBrake(0);
         }
     }
+
+    /// <summary>
+    ///  This class applies the acceleration to each of the wheels. 
+    /// </summary>
     private void ApplyThrottle(float throttle)
     {
         FLcollider.motorTorque = throttle;
@@ -86,6 +97,9 @@ public class AWDHandeling : MonoBehaviour
         RRcollider.motorTorque = throttle;
     }
 
+    /// <summary>
+    ///  This class applies the braking to the wheels. 
+    /// </summary>
     private void ApplyBrake(float brake)
     {
         FLcollider.brakeTorque = brake;
@@ -94,13 +108,20 @@ public class AWDHandeling : MonoBehaviour
         RRcollider.brakeTorque = brake * 100;
     }
 
+    /// <summary>
+    ///  This class steers the wheels 
+    /// </summary>
     private void Steering()
     {
         currentSteerAngle = MaxSteerAngle * HorizontalInput;
         FLcollider.steerAngle = Mathf.Lerp(FLcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
         FRcollider.steerAngle = Mathf.Lerp(FRcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
+        //Lerp is used to slowdown the turning, witch improvies the controlability of the car.
     }
 
+    /// <summary>
+    ///  This class calls another class to update each wheel, I chose to do it this way to reduce the amout of repedetive code.
+    /// </summary>
     private void UpdateWheels()
     {
         UpdateSingelWheel(FLcollider, FL);
@@ -109,6 +130,9 @@ public class AWDHandeling : MonoBehaviour
         UpdateSingelWheel(RRcollider, RR);
     }
 
+    /// <summary>
+    ///  This class uppdates the look of the wheels, otherwise the wheels would stay in the same position relative to the car as from the begining.
+    /// </summary>
     private void UpdateSingelWheel(WheelCollider WheelCollider, Transform WheelTransform)
     {
         Vector3 pos = WheelTransform.position;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 337528872}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999946, b: 0.99999946, a: 1}
+  m_IndirectSpecularColor: {r: 0.44401875, g: 0.49341917, b: 0.572874, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3614,7 +3614,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b212f5f8eb6fbfc4a91a82160145aa3f, type: 2}
   mapDisplay: {fileID: 1443558085}
   carDisplay: {fileID: 375024577}
-  paintDisplay: {fileID: 0}
 --- !u!1 &1443558083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,7 +5552,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d3c41b215ee8e246a692417c9707b4e, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 375024577}
-  paintDisplay: {fileID: 0}
 --- !u!1001 &1153773906884807343
 PrefabInstance:
   m_ObjectHideFlags: 0
