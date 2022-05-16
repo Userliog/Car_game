@@ -10,6 +10,7 @@ public class ScriptableObjectChanger : MonoBehaviour
     [Header("Display Scripts")]
     [SerializeField] private MapDisplay mapDisplay;
     [SerializeField] private CarDisplay carDisplay;
+    [SerializeField] private MapOptionsDisplay optionsDisplay;
     private int currentIndex;
 
     private void Awake()
@@ -36,6 +37,11 @@ public class ScriptableObjectChanger : MonoBehaviour
         if (mapDisplay != null)
         {
             mapDisplay.DisplayMap((Map)ScriptableObjects[currentIndex]);
+        }
+        if (optionsDisplay != null)
+        {
+            //PlayerPrefs.SetInt("CarToLoad", currentIndex);
+            optionsDisplay.DisplayMapOptions((LevelOptions)ScriptableObjects[currentIndex]);
         }
         if (carDisplay != null)
         {

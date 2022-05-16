@@ -44,7 +44,6 @@ public class CarDisplay : MonoBehaviour
 
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
 
-        nextButton.onClick.AddListener(() => print("nextButton"));
         nextButton.onClick.AddListener(() => carPaint.SetColor("_Color", Color.red));
         playButton.onClick.RemoveAllListeners();
         playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));

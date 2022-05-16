@@ -9,7 +9,6 @@ public class FWDHandelingOpponent : MonoBehaviour
     public Transform checkpoints;
     private List<Transform> nodes;
     private int currentNode = 0;
-    private float targetSteerAngle = 0;
 
     private double speed;
 

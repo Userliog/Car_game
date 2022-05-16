@@ -13,9 +13,10 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
+        vcam = GetComponent<CinemachineFreeLook>();
         if (tPlayer == null)
         {
-            vcam = GetComponent<CinemachineFreeLook>();
+            //vcam = GetComponent<CinemachineFreeLook>();
 
             tPlayer = GameObject.FindWithTag("Player");
             print("player = null");
