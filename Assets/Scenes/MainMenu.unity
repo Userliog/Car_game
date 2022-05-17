@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 337528872}
-  m_IndirectSpecularColor: {r: 0.17834981, g: 0.2233115, b: 0.30533886, a: 1}
+  m_IndirectSpecularColor: {r: 0.17834964, g: 0.22331119, b: 0.30533817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -449,7 +449,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5c90268ecfadd04792333d87ea15a69, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 0}
-  optionsDisplay: {fileID: 97686329}
 --- !u!1 &90708326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,7 +2226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &322900414
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4153,7 +4152,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b212f5f8eb6fbfc4a91a82160145aa3f, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 375024577}
-  optionsDisplay: {fileID: 0}
 --- !u!1 &920457146
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,7 +5024,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5c90268ecfadd04792333d87ea15a69, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 0}
-  optionsDisplay: {fileID: 97686329}
 --- !u!1 &1244729988
 GameObject:
   m_ObjectHideFlags: 0
@@ -5568,7 +5565,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b212f5f8eb6fbfc4a91a82160145aa3f, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 375024577}
-  optionsDisplay: {fileID: 0}
 --- !u!1 &1305824796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,7 +5741,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b212f5f8eb6fbfc4a91a82160145aa3f, type: 2}
   mapDisplay: {fileID: 1443558085}
   carDisplay: {fileID: 0}
-  optionsDisplay: {fileID: 0}
 --- !u!1 &1437065070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7826,7 +7821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1932785787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8762,7 +8757,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d3c41b215ee8e246a692417c9707b4e, type: 2}
   mapDisplay: {fileID: 0}
   carDisplay: {fileID: 375024577}
-  optionsDisplay: {fileID: 0}
 --- !u!1001 &1153773906884807343
 PrefabInstance:
   m_ObjectHideFlags: 0
