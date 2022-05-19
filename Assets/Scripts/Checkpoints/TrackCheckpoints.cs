@@ -5,24 +5,25 @@ using UnityEngine;
 
 public class TrackCheckpoints : MonoBehaviour
 {
+    [SerializeField] private TrackCheckpointsUI TrackCheckpointsUI;
     public event EventHandler OnCorrectCheckpoint;
     public event EventHandler OnWrongCheckpoint;
     private List<CheckpointCheck> checkpointList;
-    private int nextCheckpointIndex;
+    [SerializeField] private Transform checkpointsTransform;
+    private int nextCheckpointIndex =0;
 
     private void Awake()
     {
-        Transform checkpointsTransform = transform.Find("Checkpoints");
-
         checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
             CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();
             checkpoint.SetTrackCheckpoints(this);
             checkpointList.Add(checkpoint);
+            print(checkpoint);
+            print(checkpointsTransform);
         }
-
-        nextCheckpointIndex = 0;
+        TrackCheckpointsUI.Hide();
     }
 
     public void ThroughCheckpoint(CheckpointCheck checkpoint)
@@ -32,12 +33,11 @@ public class TrackCheckpoints : MonoBehaviour
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Hide();
             nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
-            OnCorrectCheckpoint?.Invoke(this, EventArgs.Empty);
-
+            TrackCheckpointsUI.Hide();
         }
         else
         {
-            OnWrongCheckpoint?.Invoke(this, EventArgs.Empty);
+            TrackCheckpointsUI.Show();
 
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Show();
