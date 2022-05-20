@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "New Car", menuName = "Scriptable Object/Car")]
 
@@ -17,6 +18,7 @@ public class Car : ScriptableObject
     [Header("3D Model")]
     public GameObject carModel;
 
-    [Header("3D Model")]
+    [Header("Paint")]
     public Material carPaint;
+    public List<Material> carMaterial;
 }

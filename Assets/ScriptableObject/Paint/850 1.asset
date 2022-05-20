@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b7e3ec0f7d8bc4a86e13afbd4c7c2e, type: 3}
-  m_Name: New Paint
+  m_Script: {fileID: 11500000, guid: 62da2db72f51afc4d99a82534c6dbda5, type: 3}
+  m_Name: 850 1
   m_EditorClassIdentifier: 
-  paintName: T-Yellow
-  paintDescription: 
-  carPaint: {fileID: 0}
-  carPaint2: {r: 0.9245283, g: 0.7327747, b: 0.013082923, a: 0}
+  carPaintName: Bright Red
+  carPaintMaterial: {fileID: 2100000, guid: 51efa328738b4454f86a5492665e7bbd, type: 2}

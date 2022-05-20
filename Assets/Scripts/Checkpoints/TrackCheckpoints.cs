@@ -14,7 +14,8 @@ public class TrackCheckpoints : MonoBehaviour
 
     private void Awake()
     {
-        checkpointList = new List<CheckpointCheck>();
+        //if error V
+        //checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
             CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();

@@ -10,32 +10,53 @@ public class CarDisplay : MonoBehaviour
     [SerializeField] public Text carName;
     [SerializeField] public Text carDescription;
 
+    [SerializeField] public GameObject lockIcon;
+
     [Header("Values")]
     [SerializeField] public Text carPrice;
+    [SerializeField] public Text carColor;
 
     [SerializeField] public bool carOwned;
 
     [Header("Spawnpoint")]
     [SerializeField] public Transform carContainer;
 
-    [Header("Stuff")]
+    [Header("Buttons")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button nextButton;
 
     [Header("Extra Test Stuff")]
-    [SerializeField] public Material carPaint;
+    public Material[] materialsScriptObject;
+    public string[] names;
     private Color testColor;
+    private int materialIndex;
+    List<Material> paintTest;
 
     public void DisplayCar(Car car)
     {
+        PlayerPrefs.SetInt("3-9", 1);
+        PlayerPrefs.SetInt("3eo", 0);
+        PlayerPrefs.SetInt("850", 1);
+        PlayerPrefs.SetInt("evo 9", 1);
+
+        print(car.name);
+        bool carOwned = PlayerPrefs.GetInt(car.name, 0) >= 1;
+        //lockIcon.SetActive(!carOwned);
+        playButton.interactable = carOwned;
+
         testColor = new Color(1f, 0.5f, 0.8f, 1f);
-        //Renderer carRenderer = car.transform.GetChild(1).gameObject.GetComponent<Renderer>();
         carName.text = car.carName;
         carDescription.text = car.carDescription;
-        carPrice.text = car.carPrice + " $";
-        //Renderer carRenderer = car.GetComponent<Renderer>();
-        //carRenderer.material.SetColor("_Color", carPaint.color);
-        carPaint.SetColor("color", testColor);
+        
+        if (carOwned == true)
+        {
+            carPrice.text = "Owned";
+        }
+        else
+        {
+            carPrice.text = car.carPrice + " $";
+        }
+        
 
         if (carContainer.childCount > 0)
         {
@@ -44,8 +65,29 @@ public class CarDisplay : MonoBehaviour
 
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
 
-        nextButton.onClick.AddListener(() => carPaint.SetColor("_Color", Color.red));
+        //List<Material> paintTest = new List<Material>();
+        paintTest = car.carMaterial;
+
+        //GameObject testObject = GameObject.FindWithTag("Player");
+        
+        //MeshRenderer testRendererObject = carContainer.GetComponentInChildren<MeshRenderer>();
+        //print("player: "+ testRendererObject);
+
+        //testRendererObject.sharedMaterial.color = paintTest[0].color;
+
         playButton.onClick.RemoveAllListeners();
         playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));
     }
+    public void ColorChangeTest(int change)
+    {
+        materialIndex += change;
+
+        MeshRenderer testRendererObject = carContainer.GetComponentInChildren<MeshRenderer>();
+        print("player: " + testRendererObject);
+
+        testRendererObject.sharedMaterial.color = paintTest[materialIndex].color;
+        carColor.text = paintTest[materialIndex].name;
+        print(paintTest[materialIndex].name);
+    }
+   
 }
