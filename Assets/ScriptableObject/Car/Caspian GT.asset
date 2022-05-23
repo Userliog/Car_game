@@ -16,6 +16,18 @@ MonoBehaviour:
   carDescription: A popular musclecar from america
   carPrice: 30000
   owned: 0
-  carModel: {fileID: 4966354907289633161, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}
+  carModel: {fileID: 5589338837482765790, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}
   carPaint: {fileID: 0}
-  carMaterial: []
+  carMaterial:
+  - {fileID: 2100000, guid: d8c73477531c8d449b30318b929b0d80, type: 2}
+  - {fileID: 2100000, guid: 4c13fcc5a6c06444d9915071345d216b, type: 2}
+  - {fileID: 2100000, guid: b9fa17db9e096e345855e192f0312093, type: 2}
+  - {fileID: 2100000, guid: aaf3c242754fd5247ba5e1e445672bd7, type: 2}
+  - {fileID: 2100000, guid: 50b77811c5b0b864c8388a5e6369fbfd, type: 2}
+  - {fileID: 2100000, guid: bf9f7444be4aa8449821a17c8c7de42b, type: 2}
+  - {fileID: 2100000, guid: 8096a9ec6da25ad4e9db1b5446d4c186, type: 2}
+  - {fileID: 2100000, guid: 6b21743e964fd8e4fbe14f7179e89f7a, type: 2}
+  - {fileID: 2100000, guid: dad2403bb7b764c40a411657e8ae0638, type: 2}
+  - {fileID: 2100000, guid: 566def1f7647c5148aae578b705a9cab, type: 2}
+  - {fileID: 2100000, guid: 5d5b0174019a84541a8d0d8177e58751, type: 2}
+  - {fileID: 2100000, guid: 355d2bed1ba5d654c92f04950097d2f2, type: 2}

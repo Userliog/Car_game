@@ -15,6 +15,6 @@ MonoBehaviour:
   mapIndex: 1
   mapName: Test Level
   mapDescrition: A map for testing purposes
-  nameColor: {r: 0.9339623, g: 0.81577706, b: 0.074893214, a: 0}
+  mapType: vs
   mapImage: {fileID: 21300000, guid: b8866edf76e2fd240a0a3c609a24e4a8, type: 3}
   sceneToLoad: {fileID: 102900000, guid: 0cc4b0e64ead3f84dab67b3821af3d04, type: 3}

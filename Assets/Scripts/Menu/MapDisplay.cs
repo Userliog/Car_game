@@ -17,7 +17,13 @@ public class MapDisplay : MonoBehaviour
         mapdescription.text = map.mapDescrition;
         mapImage.sprite = map.mapImage;
 
-        PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name);
+
+        
+        //PlayerPrefs.SetString("MapType", map.mapType);
+        //PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name);
+        
         playButton.onClick.RemoveAllListeners();
+        playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapType", map.mapType));
+        playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name));
     }
 }

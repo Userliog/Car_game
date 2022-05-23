@@ -16,7 +16,7 @@ MonoBehaviour:
   carDescription: A family grand tourer from the 90's
   carPrice: 5000
   owned: 0
-  carModel: {fileID: 2529965682446479707, guid: b5bce73916ad1ad46af3233e6194da89, type: 3}
+  carModel: {fileID: 1795757383722778052, guid: b5bce73916ad1ad46af3233e6194da89, type: 3}
   carPaint: {fileID: 0}
   carMaterial:
   - {fileID: 2100000, guid: 1b0c99838455d7349b9b5b70e39655b0, type: 2}

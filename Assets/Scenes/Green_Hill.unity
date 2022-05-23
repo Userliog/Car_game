@@ -8686,7 +8686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &686510056
 Transform:
   m_ObjectHideFlags: 0
@@ -11731,7 +11731,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928735127}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -14887,7 +14887,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183633176}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -17426,7 +17426,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361940398}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -21407,7 +21407,7 @@ GameObject:
   m_Layer: 0
   m_Name: Highwayrace
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21554,6 +21554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a42c3c46899684ba207f71654f4971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vs: {fileID: 1651620288}
+  timeTrial: {fileID: 43672546}
   ScriptableObjects:
   - {fileID: 11400000, guid: fe17acf009c60104da51fb0d73ab208a, type: 2}
   - {fileID: 11400000, guid: dd876b9a3d3a7fb4e9227567c17db116, type: 2}

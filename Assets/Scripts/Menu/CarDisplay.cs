@@ -9,54 +9,68 @@ public class CarDisplay : MonoBehaviour
     [Header("Description")]
     [SerializeField] public Text carName;
     [SerializeField] public Text carDescription;
-
     [SerializeField] public GameObject lockIcon;
 
     [Header("Values")]
     [SerializeField] public Text carPrice;
     [SerializeField] public Text carColor;
-
-    [SerializeField] public bool carOwned;
+    [SerializeField] public Text Money;
+    public bool carOwned;
+    public int price;
+    public string name;
 
     [Header("Spawnpoint")]
     [SerializeField] public Transform carContainer;
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
-    [SerializeField] private Button nextButton;
+    [SerializeField] private Button buyButton;
 
-    [Header("Extra Test Stuff")]
-    public Material[] materialsScriptObject;
-    public string[] names;
-    private Color testColor;
-    private int materialIndex;
-    List<Material> paintTest;
+    [Header("Paint")]
+    private int materialIndex = 0;
+    List<Material> paint;
+    private Material carMaterial;
 
     public void DisplayCar(Car car)
     {
-        PlayerPrefs.SetInt("3-9", 1);
-        PlayerPrefs.SetInt("3eo", 0);
-        PlayerPrefs.SetInt("850", 1);
-        PlayerPrefs.SetInt("evo 9", 1);
+        //PlayerPrefs.SetInt(car.name, 0);
 
-        print(car.name);
-        bool carOwned = PlayerPrefs.GetInt(car.name, 0) >= 1;
-        //lockIcon.SetActive(!carOwned);
-        playButton.interactable = carOwned;
-
-        testColor = new Color(1f, 0.5f, 0.8f, 1f);
+        Money.text = (PlayerPrefs.GetInt("money").ToString() +" $");
+        carOwned = PlayerPrefs.GetInt(car.name) >= 1;
+        name = car.name;
         carName.text = car.carName;
         carDescription.text = car.carDescription;
-        
-        if (carOwned == true)
+        paint = car.carMaterial;
+
+        if (carOwned == false)
         {
-            carPrice.text = "Owned";
+            if (buyButton != null)
+            {
+                buyButton.interactable = true;
+            }
+            if (playButton != null)
+            {
+                playButton.interactable = false;
+            }
+            lockIcon.SetActive(true);
+            carPrice.text = car.carPrice + " $";
+            price = car.carPrice;
         }
         else
         {
-            carPrice.text = car.carPrice + " $";
+            if (buyButton != null)
+            {
+                buyButton.interactable = false;
+            }
+            if (playButton != null)
+            {
+                playButton.interactable = true;
+            }
+
+            lockIcon.SetActive(false);
+            carPrice.text = "Owned";
         }
-        
+
 
         if (carContainer.childCount > 0)
         {
@@ -64,30 +78,47 @@ public class CarDisplay : MonoBehaviour
         }
 
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
-
-        //List<Material> paintTest = new List<Material>();
-        paintTest = car.carMaterial;
-
-        //GameObject testObject = GameObject.FindWithTag("Player");
         
-        //MeshRenderer testRendererObject = carContainer.GetComponentInChildren<MeshRenderer>();
-        //print("player: "+ testRendererObject);
-
-        //testRendererObject.sharedMaterial.color = paintTest[0].color;
-
-        playButton.onClick.RemoveAllListeners();
-        playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));
+        ColorChange(0);
+        if(playButton != null)
+        {
+            playButton.onClick.RemoveAllListeners();
+            playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));
+        }
     }
-    public void ColorChangeTest(int change)
+    public void ColorChange(int change)
     {
         materialIndex += change;
 
-        MeshRenderer testRendererObject = carContainer.GetComponentInChildren<MeshRenderer>();
-        print("player: " + testRendererObject);
-
-        testRendererObject.sharedMaterial.color = paintTest[materialIndex].color;
-        carColor.text = paintTest[materialIndex].name;
-        print(paintTest[materialIndex].name);
+        if (materialIndex > paint.Count - 1)
+        {
+            materialIndex = 0;
+        }
+        else if (materialIndex < 0)
+        {
+            materialIndex = (paint.Count - 1);
+        }
+        carContainer.GetComponentInChildren<MeshRenderer>().sharedMaterial.color = paint[materialIndex].color;
+        carColor.text = paint[materialIndex].name;
     }
-   
+    public void BuyCar()
+    {
+        if(PlayerPrefs.GetInt("money") >= price && PlayerPrefs.GetInt(name) < 1)
+        {
+            PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") -price));
+            PlayerPrefs.SetInt(name, 1);
+            lockIcon.SetActive(false);
+            carPrice.text = "Owned";
+        }
+        else
+        {
+            carPrice.text = "Insuficient Funds";
+        }
+        Money.text = (PlayerPrefs.GetInt("money").ToString() + " $");
+    }
+    public void GetMoney()
+    {
+        PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") + 1000));
+        Money.text = (PlayerPrefs.GetInt("money").ToString() + " $");
+    }
 }

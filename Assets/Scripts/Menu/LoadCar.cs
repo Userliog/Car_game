@@ -6,11 +6,34 @@ using Cinemachine;
 
 public class LoadCar : MonoBehaviour
 {
+    [SerializeField] private GameObject vs;
+    [SerializeField] private GameObject timeTrial;
+
     [SerializeField] private ScriptableObject[] ScriptableObjects;
     public Transform spawnPoint;
     public CinemachineFreeLook vcam;
     void Start()
     {
+        if(PlayerPrefs.GetString("MapType") == "vs")
+        {
+            vs.SetActive(true);
+            timeTrial.SetActive(false);
+            print("vs true");
+        }
+        else if(PlayerPrefs.GetString("MapType") == "timetrial")
+        {
+            vs.SetActive(false);
+            timeTrial.SetActive(true);
+            print("Timetrial true");
+        }
+        else
+        {
+            vs.SetActive(false);
+            timeTrial.SetActive(false);
+
+            print("vs false");
+        }
+
         int selectedCar = PlayerPrefs.GetInt("CarToLoad");
         PlaceCar((Car)ScriptableObjects[selectedCar]);
     }
