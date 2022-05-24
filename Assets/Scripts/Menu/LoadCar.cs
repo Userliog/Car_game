@@ -18,20 +18,16 @@ public class LoadCar : MonoBehaviour
         {
             vs.SetActive(true);
             timeTrial.SetActive(false);
-            print("vs true");
         }
         else if(PlayerPrefs.GetString("MapType") == "timetrial")
         {
             vs.SetActive(false);
             timeTrial.SetActive(true);
-            print("Timetrial true");
         }
         else
         {
             vs.SetActive(false);
             timeTrial.SetActive(false);
-
-            print("vs false");
         }
 
         int selectedCar = PlayerPrefs.GetInt("CarToLoad");

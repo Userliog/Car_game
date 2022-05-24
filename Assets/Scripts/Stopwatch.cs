@@ -6,8 +6,8 @@ using System;
 
 public class Stopwatch : MonoBehaviour
 {
-    bool stopwatchOn = false;
-    float currentTime;
+    public bool stopwatchOn = false;
+    public float currentTime;
     public Text timeText;
 
     void Start()
@@ -28,10 +28,9 @@ public class Stopwatch : MonoBehaviour
     {
         stopwatchOn = true;
     }
-    public void StopStopwatch()
+    public float StopStopwatch()
     {
         stopwatchOn = false;
-        print(timeText + " hjk "+ currentTime);
-        //return (currentTime);
+        return currentTime;
     }
 }

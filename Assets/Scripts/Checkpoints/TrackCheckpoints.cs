@@ -6,15 +6,15 @@ using UnityEngine;
 public class TrackCheckpoints : MonoBehaviour
 {
     [SerializeField] private TrackCheckpointsUI TrackCheckpointsUI;
+    [SerializeField] private ResultsDisplay ResultsDisplay;
     public event EventHandler OnCorrectCheckpoint;
     public event EventHandler OnWrongCheckpoint;
     private List<CheckpointCheck> checkpointList;
     [SerializeField] private Transform checkpointsTransform;
-    private int nextCheckpointIndex =0;
+    private int nextCheckpointIndex = 0;
 
     private void Awake()
     {
-        //if error V
         checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
@@ -22,9 +22,9 @@ public class TrackCheckpoints : MonoBehaviour
             checkpoint.SetTrackCheckpoints(this);
             checkpointList.Add(checkpoint);
             print(checkpoint);
-            print(checkpointsTransform);
         }
         TrackCheckpointsUI.Hide();
+        print(checkpointList.Count);
     }
 
     public void ThroughCheckpoint(CheckpointCheck checkpoint)
@@ -43,6 +43,16 @@ public class TrackCheckpoints : MonoBehaviour
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Show();
         }
-
+        if(nextCheckpointIndex == 0)//checkpointList.Count - 1)
+        {
+            print("nextCheckpointIndex = lastcheckpoint");
+            if (PlayerPrefs.GetString("MapType") == "timetrial")
+            {
+                ResultsDisplay.DisplayResultsTimeTrial();
+            }else if(PlayerPrefs.GetString("MapType") == "vs")
+            {
+                ResultsDisplay.DisplayResultsRace();
+            }
+        }
     }
 }

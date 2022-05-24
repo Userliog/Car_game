@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CheckpointCheck : MonoBehaviour
 {
-    private TrackCheckpoints trackCheckpoints;
+    [SerializeField] private TrackCheckpoints trackCheckpoints;
     private MeshRenderer meshRenderer;
 
     private void Awake()

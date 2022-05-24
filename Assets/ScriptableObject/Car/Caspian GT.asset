@@ -16,7 +16,7 @@ MonoBehaviour:
   carDescription: A popular musclecar from america
   carPrice: 30000
   owned: 0
-  carModel: {fileID: 5589338837482765790, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}
+  carModel: {fileID: 2065460612323502635, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}
   carPaint: {fileID: 0}
   carMaterial:
   - {fileID: 2100000, guid: d8c73477531c8d449b30318b929b0d80, type: 2}

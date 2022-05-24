@@ -15,5 +15,7 @@ MonoBehaviour:
   mapName: Green Hills - Timetrial
   mapDescrition: Race against the clock in the mountains of green hills
   mapType: timetrial
+  prizeMoney: 1000
+  prizeRequierment: 75
   mapImage: {fileID: 21300000, guid: 0577267eb2093944189c0cf91203eb67, type: 3}
   sceneToLoad: {fileID: 102900000, guid: 6eb50314a22d3594c984a964e2411bd8, type: 3}

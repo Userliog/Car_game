@@ -16,7 +16,7 @@ MonoBehaviour:
   carDescription: A Gearman sports coupe from the 80's
   carPrice: 3000
   owned: 0
-  carModel: {fileID: 2123549241511969708, guid: c9410b3a49b247040915b9f48c0c399a, type: 3}
+  carModel: {fileID: 1088868903229468448, guid: c9410b3a49b247040915b9f48c0c399a, type: 3}
   carPaint: {fileID: 0}
   carMaterial:
   - {fileID: 2100000, guid: 227f9bb6b72e3c84ba90343e815c6def, type: 2}

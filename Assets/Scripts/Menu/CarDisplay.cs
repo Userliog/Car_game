@@ -80,11 +80,7 @@ public class CarDisplay : MonoBehaviour
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
         
         ColorChange(0);
-        if(playButton != null)
-        {
-            playButton.onClick.RemoveAllListeners();
-            playButton.onClick.AddListener(() => SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad")));
-        }
+        
     }
     public void ColorChange(int change)
     {
@@ -120,5 +116,9 @@ public class CarDisplay : MonoBehaviour
     {
         PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") + 1000));
         Money.text = (PlayerPrefs.GetInt("money").ToString() + " $");
+    }
+    public void Play()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetString("MapToLoad"));
     }
 }
