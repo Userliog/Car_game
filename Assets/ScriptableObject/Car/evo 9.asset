@@ -16,13 +16,14 @@ MonoBehaviour:
   carDescription: A Japaniese pocket rocket with AWD
   carPrice: 35000
   owned: 0
-  carModel: {fileID: 1877557485898735862, guid: 922db4b4aa3c41c40af7f479683d789d, type: 3}
+  carModel: {fileID: 5860318582837158343, guid: c89f7146f5d28cc4a81c565439964504, type: 3}
   carPaint: {fileID: 2100000, guid: ba133aa4ae6254c40a6c35878eb1807d, type: 2}
   carMaterial:
-  - {fileID: 2100000, guid: 9f074888110fd1f45ab25c12a621ed1a, type: 2}
-  - {fileID: 2100000, guid: a7f2c2822d755b14294ff665ec2d6cb9, type: 2}
-  - {fileID: 2100000, guid: 02dcffedfa96d7f4194c6080452599a9, type: 2}
   - {fileID: 2100000, guid: fdf0c4f7c3a6b2d44a88b3d279bf99f5, type: 2}
   - {fileID: 2100000, guid: bd07f1764c42760438c1a1c191632486, type: 2}
-  - {fileID: 2100000, guid: 289446cb38da38f459da3fd33335fb01, type: 2}
+  - {fileID: 2100000, guid: 07a7c71edb253e7439bc91de00d51bdf, type: 2}
   - {fileID: 2100000, guid: 3f58b9317e3a4d3478d3ca597ddf1203, type: 2}
+  - {fileID: 2100000, guid: 9f074888110fd1f45ab25c12a621ed1a, type: 2}
+  - {fileID: 2100000, guid: 02dcffedfa96d7f4194c6080452599a9, type: 2}
+  - {fileID: 2100000, guid: d579a6716926594429c37e478c0f0e78, type: 2}
+  - {fileID: 2100000, guid: a7f2c2822d755b14294ff665ec2d6cb9, type: 2}

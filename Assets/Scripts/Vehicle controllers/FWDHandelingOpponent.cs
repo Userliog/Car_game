@@ -10,7 +10,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     private List<Transform> nodes;
     private int currentNode = 0;
 
-    private double speed;
+    //private double speed;
 
     [Header("Constant values")]
     [SerializeField] private float EngineMax;
@@ -18,6 +18,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     [SerializeField] private float MaxSteerAngle;
     [SerializeField] private float MaxSpeed;
     [SerializeField] private float turnSpeed;
+    private float currentEnginePower = 0;
 
     [Header("Wheel colliders")]
     [SerializeField] private WheelCollider FLcollider;
@@ -69,12 +70,12 @@ public class FWDHandelingOpponent : MonoBehaviour
     /// </summary>
     private void Engine()
     {
-        speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60 / 500;
+        double speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60 / 500;
         //this calculates the current wheelspeed of the car
 
         if (speed < MaxSpeed)
         {
-            ApplyThrottle((EngineMax * 5) / 4);
+            ApplyThrottle((currentEnginePower * 5) / 4);
         }
         else
         {
@@ -148,5 +149,10 @@ public class FWDHandelingOpponent : MonoBehaviour
         WheelTransform.position = pos;
         WheelTransform.rotation = rot;
         //Second it applies these new values to the 3d model to update the rotation and postion.
+    }
+
+    public void StartCar()
+    {
+        currentEnginePower = EngineMax;
     }
 }

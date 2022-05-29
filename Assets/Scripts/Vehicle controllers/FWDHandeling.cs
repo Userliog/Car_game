@@ -11,7 +11,7 @@ public class FWDHandeling : MonoBehaviour
     private float currentBreakForce;
     private bool isBreaking;
     private double speed;
-    
+
     [Header("Constant values")]
     [SerializeField] private float EngineMax;
     [SerializeField] private float MaxSpeed;

@@ -12,41 +12,74 @@ public class MapDisplay : MonoBehaviour
     [SerializeField] private Image mapImage;
     [SerializeField] private Text PrizeMoney;
     [SerializeField] private Text PrizeRequierment;
+    [SerializeField] private Text mapLaps;
+    [SerializeField] private GameObject mapLapsHeader;
     [SerializeField] private Button playButton;
     private float timeTrialTime;
+    //private string mapType;
+    //private string sceneToLoad;
+    private int laps;
 
     public void DisplayMap(Map map)
     {
         mapName.text = map.mapName;
         mapdescription.text = map.mapDescrition;
         PrizeMoney.text = map.prizeMoney+" $";
+        
         mapImage.sprite = map.mapImage;
+        //mapType = map.mapType;
+        //sceneToLoad = map.sceneToLoad.name;
 
-        if(map.mapType == "vs")
+        if(map.trackType == "circuit")
         {
-            PrizeRequierment.text = "Finish "+map.prizeRequierment+" place";
+            mapLapsHeader.SetActive(true);
+            mapLaps.text = map.laps.ToString();
+            laps = map.laps;
         }
-        else if(map.mapType == "timetrial")
+        else
         {
-            timeTrialTime = float.Parse(map.prizeRequierment);
+            mapLapsHeader.SetActive(false);
+            laps = 1;
+        }
+        
+
+        if (map.raceType == "vs")
+        {
+            PrizeRequierment.text = "Finish in 1st place";
+        }
+        else if(map.raceType == "timetrial")
+        {
+            timeTrialTime = map.timeRequierment;
             PrizeRequierment.text = "Finish within " + TimeSpan.FromSeconds(timeTrialTime).ToString(@"mm\:ss");
         }
         else
         {
             PrizeRequierment.text = "Nothing";
         }
-        
-
-
-
-
-        //PlayerPrefs.SetString("MapType", map.mapType);
-        //PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name);
-
         playButton.onClick.RemoveAllListeners();
-        playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapMoney", map.prizeMoney));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetFloat("MapTime", timeTrialTime));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapType", map.mapType));
+        playButton.onClick.AddListener(() => PlayerPrefs.SetString("RaceType", map.raceType));
+        playButton.onClick.AddListener(() => PlayerPrefs.SetString("TrackType", map.trackType));
         playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name));
+        playButton.onClick.AddListener(() => PlayerPrefs.SetInt("MapLaps", map.laps));
+        playButton.onClick.AddListener(() => PlayerPrefs.SetInt("MapMoney", int.Parse(map.prizeMoney)));
+    }
+    public void StartButton()
+    {
+        PlayerPrefs.SetString("MapName", mapName.text);
+        //PlayerPrefs.SetString("MapMoney", PrizeMoney.text);
+        PlayerPrefs.SetFloat("MapTime", timeTrialTime);
+        //PlayerPrefs.SetString("MapType", mapType);
+        //PlayerPrefs.SetString("MapToLoad", sceneToLoad);
+        //PlayerPrefs.SetInt("MapLaps", int.Parse(mapLaps.text));
+
+        PlayerPrefs.SetInt("MapLaps", laps);
+
+
+        print("Name: "+PlayerPrefs.GetString("MapName"));
+        print("Money: "+PlayerPrefs.GetInt("MapMoney"));
+        print("Time: " + PlayerPrefs.GetFloat("MapTime"));
+        print("Type: " + PlayerPrefs.GetString("MapType"));
+        print("ToLoad: " + PlayerPrefs.GetString("MapToLoad"));
+        print("Laps: " + PlayerPrefs.GetInt("MapLaps"));
     }
 }

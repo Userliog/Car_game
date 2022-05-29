@@ -16,13 +16,13 @@ MonoBehaviour:
   carDescription: A family grand tourer from the 90's
   carPrice: 5000
   owned: 0
-  carModel: {fileID: 7246847804662114731, guid: b5bce73916ad1ad46af3233e6194da89, type: 3}
+  carModel: {fileID: 3769807999732229834, guid: e1482efaba5732a4db429cdd6ee0ddfb, type: 3}
   carPaint: {fileID: 0}
   carMaterial:
-  - {fileID: 2100000, guid: 1b0c99838455d7349b9b5b70e39655b0, type: 2}
   - {fileID: 2100000, guid: 2bff0cce6cf820e4a976d17a056ad504, type: 2}
-  - {fileID: 2100000, guid: 51efa328738b4454f86a5492665e7bbd, type: 2}
+  - {fileID: 2100000, guid: 0bec9bedd66abca4fb6a056ad2bbd7de, type: 2}
+  - {fileID: 2100000, guid: 54841e5a3105adf44b5a133c9008c0b8, type: 2}
   - {fileID: 2100000, guid: faa5bb08b952b354082132b524cd4139, type: 2}
   - {fileID: 2100000, guid: 71f1b5e19652fc24d82e60a0e2f3a94a, type: 2}
   - {fileID: 2100000, guid: 3c72269729f7fec43a7888bb45c855e2, type: 2}
-  - {fileID: 2100000, guid: 54841e5a3105adf44b5a133c9008c0b8, type: 2}
+  - {fileID: 2100000, guid: 1b0c99838455d7349b9b5b70e39655b0, type: 2}

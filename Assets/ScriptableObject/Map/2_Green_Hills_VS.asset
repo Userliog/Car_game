@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3e1f93482e33c49a9b2c7fc318a22b, type: 3}
   m_Name: 2_Green_Hills_VS
   m_EditorClassIdentifier: 
-  mapName: Green Hills - Race
+  mapName: Green Hills - Highway race
   mapDescrition: Race a lap around the highway, against an opponent in a 3-9.
-  mapType: vs
+  raceType: vs
+  trackType: circuit
   prizeMoney: 4500
-  prizeRequierment: 1 st
+  timeRequierment: 0
+  laps: 1
   mapImage: {fileID: 21300000, guid: cd33bd26d8371624ea0c5124e8d519c9, type: 3}
   sceneToLoad: {fileID: 102900000, guid: 6eb50314a22d3594c984a964e2411bd8, type: 3}

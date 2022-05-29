@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3e1f93482e33c49a9b2c7fc318a22b, type: 3}
   m_Name: 1_Green_Hills_Timetrial
   m_EditorClassIdentifier: 
-  mapName: Green Hills - Timetrial
+  mapName: Green Hills - Mountain timetrial
   mapDescrition: Race against the clock in the mountains of green hills
-  mapType: timetrial
+  raceType: timetrial
+  trackType: sprint
   prizeMoney: 1000
-  prizeRequierment: 75
+  timeRequierment: 35
+  laps: 0
   mapImage: {fileID: 21300000, guid: 0577267eb2093944189c0cf91203eb67, type: 3}
   sceneToLoad: {fileID: 102900000, guid: 6eb50314a22d3594c984a964e2411bd8, type: 3}

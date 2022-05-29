@@ -3,31 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using System.Linq;
+using UnityEngine.UI;
+using System;
 
 public class LoadCar : MonoBehaviour
 {
-    [SerializeField] private GameObject vs;
-    [SerializeField] private GameObject timeTrial;
-
+    [SerializeField] private List<GameObject> routeList;
     [SerializeField] private ScriptableObject[] ScriptableObjects;
     public Transform spawnPoint;
     public CinemachineFreeLook vcam;
+
+    public bool stopwatchOn = false;
+    public float currentTime = 0;
+    [SerializeField] private GameObject timerBase;
+    public Text timeText;
+
     void Start()
     {
-        if(PlayerPrefs.GetString("MapType") == "vs")
+        foreach(GameObject x in routeList)
         {
-            vs.SetActive(true);
-            timeTrial.SetActive(false);
+            x.SetActive(false);
         }
-        else if(PlayerPrefs.GetString("MapType") == "timetrial")
+
+        GameObject route = routeList.Where(obj => obj.name == PlayerPrefs.GetString("MapName")).SingleOrDefault();
+        if(route != null)
         {
-            vs.SetActive(false);
-            timeTrial.SetActive(true);
+            route.SetActive(true);
+            spawnPoint = route.transform.GetChild(0);
         }
-        else
+        
+
+        print(PlayerPrefs.GetString("MapName"));
+
+        print(route);
+
+        if (PlayerPrefs.GetString("RaceType") == "freeroam")
         {
-            vs.SetActive(false);
-            timeTrial.SetActive(false);
+            timerBase.SetActive(false);
         }
 
         int selectedCar = PlayerPrefs.GetInt("CarToLoad");
@@ -39,6 +52,13 @@ public class LoadCar : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (stopwatchOn == true)
+        {
+            currentTime += Time.deltaTime;
+        }
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        timeText.text = time.ToString(@"mm\:ss\:fff");
     }
     public void PlaceCar(Car car)
     {
@@ -51,5 +71,18 @@ public class LoadCar : MonoBehaviour
 
         vcam.Follow = GameObject.FindWithTag("Player").transform;
         vcam.LookAt = GameObject.FindWithTag("Player").transform;
+    }
+
+    public void StartStopwatch()
+    {
+        if (PlayerPrefs.GetString("RaceType") != "freeroam")
+        {
+            stopwatchOn = true;
+        } 
+    }
+    public float StopStopwatch()
+    {
+        stopwatchOn = false;
+        return currentTime;
     }
 }

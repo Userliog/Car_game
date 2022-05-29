@@ -12,13 +12,14 @@ public class ResultsDisplay : MonoBehaviour
     [SerializeField] private Text PrizeRequierment;
     [SerializeField] private Text PrizeMoney;
     [SerializeField] private Text currentBalance;
-    [SerializeField] private Stopwatch stopwatch;
+    [SerializeField] private LoadCar stopwatch;
     private int newMoney;
 
     private void Awake()
     {
         gameObject.SetActive(false);
     }
+
     public void DisplayResultsTimeTrial()
     {
         gameObject.SetActive(true);
@@ -27,12 +28,12 @@ public class ResultsDisplay : MonoBehaviour
         if (stopWatchTime <= timeToBeat)
         {
             header.text = "You beat the time";
-            newMoney = int.Parse(PlayerPrefs.GetString("MapMoney"));
+            newMoney = PlayerPrefs.GetInt("MapMoney");
         }
         else if(stopWatchTime > timeToBeat && stopWatchTime <= (timeToBeat*1.15))
         {
             header.text = "You almost beat the time";
-            newMoney = (int.Parse(PlayerPrefs.GetString("MapMoney"))) / 2;
+            newMoney = (PlayerPrefs.GetInt("MapMoney")) / 2;
         }else
         {
             header.text = "You lost";
@@ -45,24 +46,25 @@ public class ResultsDisplay : MonoBehaviour
         PrizeRequierment.text = "The time to beat was " + TimeSpan.FromSeconds(timeToBeat).ToString(@"mm\:ss\:fff");
         currentBalance.text = "Your current balance is " + PlayerPrefs.GetInt("money") + " $";
     }
-    public void DisplayResultsRace()
+    public void DisplayResultsRace(string Winner)
     {
         gameObject.SetActive(true);
         float stopWatchTime = stopwatch.StopStopwatch();
-        float timeToBeat = PlayerPrefs.GetFloat("MapTime");
-        if (stopWatchTime <= timeToBeat)
+        //float stopWatchTime = StopStopwatch();
+        //float timeToBeat = PlayerPrefs.GetFloat("MapTime");
+        if (Winner == "Player")
         {
             header.text = "You beat the opponent";
-            currentResult.text = "You finished in 1st place";
-            int newMoney = int.Parse(PlayerPrefs.GetString("MapMoney"));
+            currentResult.text = "You finished in 1st place, it took you "+ TimeSpan.FromSeconds(stopWatchTime).ToString(@"mm\:ss\:fff");
+            int newMoney = PlayerPrefs.GetInt("MapMoney");
             PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") + newMoney));
             PrizeMoney.text = "You earned " + newMoney + " $";
         }
         else
         {
             header.text = "You lost";
-            currentResult.text = "You finished in last place";
-            int newMoney = int.Parse(PlayerPrefs.GetString("MapMoney"));
+            currentResult.text = "You finished in last place, it took you " + TimeSpan.FromSeconds(stopWatchTime).ToString(@"mm\:ss\:fff");
+            int newMoney = PlayerPrefs.GetInt("MapMoney");
             PrizeMoney.text = "You earned 0 $";
         }
         PrizeRequierment.text = "The position to beat was 1st place";
