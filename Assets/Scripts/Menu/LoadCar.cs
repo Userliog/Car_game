@@ -11,9 +11,11 @@ public class LoadCar : MonoBehaviour
 {
     [SerializeField] private List<GameObject> routeList;
     [SerializeField] private ScriptableObject[] ScriptableObjects;
+    [SerializeField] private GameObject pauseMenuUI;
     public Transform spawnPoint;
     public CinemachineFreeLook vcam;
 
+    private bool gameIsPaused = false;
     public bool stopwatchOn = false;
     public float currentTime = 0;
     [SerializeField] private GameObject timerBase;
@@ -21,7 +23,9 @@ public class LoadCar : MonoBehaviour
 
     void Start()
     {
-        foreach(GameObject x in routeList)
+        pauseMenuUI.SetActive(false);
+
+        foreach (GameObject x in routeList)
         {
             x.SetActive(false);
         }
@@ -51,6 +55,19 @@ public class LoadCar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(gameIsPaused == true)
+            {
+                ResumeGame();
+                print("Resume");
+            }
+            else
+            {
+                print("Pause");
+                PauseGame();
+            }
         }
 
         if (stopwatchOn == true)
@@ -84,5 +101,27 @@ public class LoadCar : MonoBehaviour
     {
         stopwatchOn = false;
         return currentTime;
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(true);
+        gameIsPaused = true;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
+        gameIsPaused = false;
+    }
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

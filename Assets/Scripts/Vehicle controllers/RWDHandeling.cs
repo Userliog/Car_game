@@ -10,7 +10,7 @@ public class RWDHandeling : MonoBehaviour
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
-    private double speed;
+    private float speed;
 
     [Header("Constant values")]
     [SerializeField] private float EngineMax;
@@ -57,7 +57,38 @@ public class RWDHandeling : MonoBehaviour
 
     private void Engine()
     {
-        speed = (3.14 * FRcollider.radius * FRcollider.rpm * 60) / 500;
+        speed = (3.14f * FRcollider.radius * FRcollider.rpm * 60f) / 500f;
+        //print(speed);
+        WheelHit FLhit = new WheelHit();
+        WheelHit FRhit = new WheelHit();
+        WheelHit RLhit = new WheelHit();
+        WheelHit RRhit = new WheelHit();
+        FLcollider.GetGroundHit(out FLhit);
+        FLcollider.GetGroundHit(out FRhit);
+        FLcollider.GetGroundHit(out RLhit);
+        FLcollider.GetGroundHit(out RRhit);
+
+        //current Extremum slip
+        float FrontExs = 1f;
+        float RearExs = 0.4f;
+
+        //current sideways slip divided by Extremum slip
+
+
+
+        print("-------------------------------------");
+        //print("FL frowardSlip: " + FLhit.forwardSlip);
+        print("FL: " + FLhit.sidewaysSlip/FrontExs);
+        //print("FR frowardSlip: " + FRhit.forwardSlip);
+        print("FR: " + FRhit.sidewaysSlip/FrontExs);
+        //print("RL frowardSlip: " + RLhit.forwardSlip);
+        print("RL: " + RLhit.sidewaysSlip/RearExs);
+        //print("RR frowardSlip: " + RRhit.forwardSlip);
+        print("RR: " + RRhit.sidewaysSlip/RearExs);
+
+        print("Speed: "+speed);
+        //print(speed / MaxSpeed);
+        print("-------------------------------------");
 
         if (speed < MaxSpeed)
         {
@@ -94,9 +125,15 @@ public class RWDHandeling : MonoBehaviour
 
     private void Steering()
     {
-        currentSteerAngle = MaxSteerAngle * HorizontalInput;
+        float MaxSpeedSteer = 10;
+        float k = (((MaxSpeedSteer / MaxSteerAngle) - 1f) / MaxSpeed);
+
+        currentSteerAngle = (MaxSteerAngle * HorizontalInput) * (k * speed + 1);
+
+
         FLcollider.steerAngle = Mathf.Lerp(FLcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
         FRcollider.steerAngle = Mathf.Lerp(FRcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
+        //print(currentSteerAngle);
     }
 
     private void UpdateWheels()
