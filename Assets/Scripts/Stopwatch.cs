@@ -19,7 +19,7 @@ public class Stopwatch : MonoBehaviour
     {
         if (stopwatchOn == true)
         {
-            currentTime += Time.deltaTime;
+            //currentTime += Time.deltaTime;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         timeText.text = time.ToString(@"mm\:ss\:fff");

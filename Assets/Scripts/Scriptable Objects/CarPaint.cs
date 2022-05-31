@@ -5,9 +5,9 @@ using UnityEngine;
 public class CarPaint : ScriptableObject
 {
     //Scriptable objects are used when 
-    [Header("Description")]
-    public string carPaintName;
+    //[Header("Description")]
+    //public string carPaintName;
 
-    [Header("Paint")]
-    public Material carPaintMaterial;
+    //[Header("Paint")]
+    //public Material carPaintMaterial;
 }

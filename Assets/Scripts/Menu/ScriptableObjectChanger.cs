@@ -38,11 +38,7 @@ public class ScriptableObjectChanger : MonoBehaviour
         {
             mapDisplay.DisplayMap((Map)ScriptableObjects[currentIndex]);
         }
-        if (optionsDisplay != null)
-        {
-            //PlayerPrefs.SetInt("CarToLoad", currentIndex);
-            optionsDisplay.DisplayMapOptions((LevelOptions)ScriptableObjects[currentIndex]);
-        }
+
         if (carDisplay != null)
         {
             PlayerPrefs.SetInt("CarToLoad", currentIndex);

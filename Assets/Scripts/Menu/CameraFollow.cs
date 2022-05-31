@@ -16,6 +16,9 @@ public class CameraFollow : MonoBehaviour
         vcam = GetComponent<CinemachineFreeLook>();
         if (tPlayer == null)
         {
+            //
+            //Delete Delete Delete
+            //
             //vcam = GetComponent<CinemachineFreeLook>();
 
             tPlayer = GameObject.FindWithTag("Player");
@@ -33,12 +36,12 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if(tPlayer == null)
+        if (tPlayer == null)
         {
             tPlayer = GameObject.FindWithTag("Player");
             print(tPlayer);
         }
-        
+
         if (tPlayer != null)
         {
             print("player =/= null");

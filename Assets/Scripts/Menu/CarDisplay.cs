@@ -35,7 +35,7 @@ public class CarDisplay : MonoBehaviour
     {
         //PlayerPrefs.SetInt(car.name, 0);
 
-        Money.text = (PlayerPrefs.GetInt("money").ToString() +" $");
+        Money.text = (PlayerPrefs.GetInt("money").ToString() + " $");
         carOwned = PlayerPrefs.GetInt(car.name) >= 1;
         name = car.name;
         carName.text = car.carName;
@@ -78,9 +78,9 @@ public class CarDisplay : MonoBehaviour
         }
 
         Instantiate(car.carModel, carContainer.position, carContainer.rotation, carContainer);
-        
+
         ColorChange(0);
-        
+
     }
     public void ColorChange(int change)
     {
@@ -99,9 +99,9 @@ public class CarDisplay : MonoBehaviour
     }
     public void BuyCar()
     {
-        if(PlayerPrefs.GetInt("money") >= price && PlayerPrefs.GetInt(name) < 1)
+        if (PlayerPrefs.GetInt("money") >= price && PlayerPrefs.GetInt(name) < 1)
         {
-            PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") -price));
+            PlayerPrefs.SetInt("money", (PlayerPrefs.GetInt("money") - price));
             PlayerPrefs.SetInt(name, 1);
             lockIcon.SetActive(false);
             carPrice.text = "Owned";
