@@ -36,17 +36,21 @@ public class UniversalHandeling : MonoBehaviour
     public bool RWD;
     public bool FWD;
     public bool AWD;
-
-    private Rigidbody RB;
+    
     [Header("Center of mass")]
     [SerializeField] public Transform com;
+    private Rigidbody RB;
 
     void Start()
     {
+        //This changes the center of mass of the car
         RB = GetComponent<Rigidbody>();
         RB.centerOfMass = com.transform.localPosition;
     }
 
+    /// <summary>
+    ///  This class calls all other classes.
+    /// </summary>
     void FixedUpdate()
     {
         GetInput();
@@ -55,6 +59,9 @@ public class UniversalHandeling : MonoBehaviour
         UpdateWheels();
     }
 
+    /// <summary>
+    ///  This class gets all inputs from the player and saves them as variables.
+    /// </summary>
     private void GetInput()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
@@ -62,41 +69,15 @@ public class UniversalHandeling : MonoBehaviour
         isBreaking = Input.GetKey(KeyCode.Space);
     }
 
+    /// <summary>
+    ///  This class acceraits the car to top speed.
+    /// </summary>
     private void Engine()
     {
+        //this calculates the current wheelspeed of the car
         speed = (3.14f * FRcollider.radius * FRcollider.rpm * 60f) / 500f;
-        //print(speed);
-        WheelHit FLhit = new WheelHit();
-        WheelHit FRhit = new WheelHit();
-        WheelHit RLhit = new WheelHit();
-        WheelHit RRhit = new WheelHit();
-        FLcollider.GetGroundHit(out FLhit);
-        FLcollider.GetGroundHit(out FRhit);
-        FLcollider.GetGroundHit(out RLhit);
-        FLcollider.GetGroundHit(out RRhit);
 
-        //current Extremum slip
-        float FrontExs = 1f;
-        float RearExs = 0.4f;
-
-        //current sideways slip divided by Extremum slip
-
-
-
-        print("-------------------------------------");
-        //print("FL frowardSlip: " + FLhit.forwardSlip);
-        print("FL: " + FLhit.sidewaysSlip / FrontExs);
-        //print("FR frowardSlip: " + FRhit.forwardSlip);
-        print("FR: " + FRhit.sidewaysSlip / FrontExs);
-        //print("RL frowardSlip: " + RLhit.forwardSlip);
-        print("RL: " + RLhit.sidewaysSlip / RearExs);
-        //print("RR frowardSlip: " + RRhit.forwardSlip);
-        print("RR: " + RRhit.sidewaysSlip / RearExs);
-
-        print("Speed: " + speed);
-        //print(speed / MaxSpeed);
-        print("-------------------------------------");
-
+        //When the car reaches top speed you cant accelerate any more
         if (speed < MaxSpeed)
         {
             ApplyThrottle(VerticalInput * ((EngineMax * 5) / 4));
@@ -106,6 +87,7 @@ public class UniversalHandeling : MonoBehaviour
             ApplyThrottle(0);
         }
 
+        //The force for the brakes is calculated by the braking pressure times maximum braking power.
         currentBreakForce = isBreaking ? BrakeMax : 0f;
         if (isBreaking)
         {
@@ -116,6 +98,13 @@ public class UniversalHandeling : MonoBehaviour
             ApplyBrake(0);
         }
     }
+
+    /// <param 
+    /// name="throttle"> Float: The amount to accelerate the car.
+    /// </param>
+    /// <summary>
+    ///  This function applies throttle to the driving wheels, depending on witch are selected
+    /// </summary>
     private void ApplyThrottle(float throttle)
     {
         if (FWD == true)
@@ -138,27 +127,37 @@ public class UniversalHandeling : MonoBehaviour
 
     }
 
+    /// <param 
+    /// name="brake"> Float: The amount of braking force.
+    /// </param>
+    /// <summary>
+    ///  This function applies braking to all the wheels, but has a rear bias
+    /// </summary>
     private void ApplyBrake(float brake)
     {
+        //The rear wheels have a higher force to act as a handbrake, but all wheels are applied to increese controllablity
         FLcollider.brakeTorque = brake;
         FRcollider.brakeTorque = brake;
         RLcollider.brakeTorque = brake * 100;
         RRcollider.brakeTorque = brake * 100;
     }
 
+    /// <summary>
+    ///  This function calculates and applies sterring to the front wheels
+    /// </summary>
     private void Steering()
     {
+        //The current steering angel is linear to the speed of the car, and has a lower steering angle at higher speeds, witch increases coner ability
+        currentSteerAngle = (MaxSteerAngle * HorizontalInput) * ((((MaxSpeedSteer / MaxSteerAngle) - 1f) / MaxSpeed) * speed + 1f);
 
-        //float k = (((MaxSpeedSteer / MaxSteerAngle) - 1f) / MaxSpeed);
-
-        currentSteerAngle = (MaxSteerAngle * HorizontalInput) * ((((MaxSpeedSteer / MaxSteerAngle) - 1f) / MaxSpeed) * speed + 1);
-
-
+        //The sterring angle is applied to the wheels, and the time it takes to reach full lock can be adjusted
         FLcollider.steerAngle = Mathf.Lerp(FLcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
         FRcollider.steerAngle = Mathf.Lerp(FRcollider.steerAngle, currentSteerAngle, Time.deltaTime * turnSpeed);
-        //print(currentSteerAngle);
     }
 
+    /// <summary>
+    ///  This function calls another function to update each wheel, I choose to do it this way to reduce the amout of repedetive code.
+    /// </summary>
     private void UpdateWheels()
     {
         UpdateSingelWheel(FLcollider, FL);
@@ -167,12 +166,24 @@ public class UniversalHandeling : MonoBehaviour
         UpdateSingelWheel(RRcollider, RR);
     }
 
+    /// <param 
+    /// name="WheelCollider"> WheelCollider: The wheel collider to base the new transform position of.
+    /// </param>
+    /// <param 
+    /// name="WheelTransform"> Transform: The wheel transform to uppdate its position.
+    /// </param>
+    /// <summary>
+    ///  This function updates the look of the wheels, otherwise the wheels would stay in the same position relative to the car as from the begining.
+    /// </summary>
     private void UpdateSingelWheel(WheelCollider WheelCollider, Transform WheelTransform)
     {
+        //The position of the wheel colliders is saved
         Vector3 pos = WheelTransform.position;
         Quaternion rot = WheelTransform.rotation;
         WheelCollider.GetWorldPose(out pos, out rot);
         rot = rot * Quaternion.Euler(new Vector3());
+
+        //And applied to the wheel transform
         WheelTransform.position = pos;
         WheelTransform.rotation = rot;
     }

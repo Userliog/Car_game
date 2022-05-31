@@ -21,22 +21,24 @@ public class TrackCheckpoints : MonoBehaviour
 
     private void Awake()
     {
+        //Prepares variables
         raceType = PlayerPrefs.GetString("RaceType");
         trackType = PlayerPrefs.GetString("TrackType");
         laps = PlayerPrefs.GetInt("MapLaps");
-        print(PlayerPrefs.GetInt("MapLaps"));
+
+        //Adds all checkpoints in a transform to a list
         checkpointList = new List<CheckpointCheck>();
         foreach (Transform checkpointTransform in checkpointsTransform)
         {
             CheckpointCheck checkpoint = checkpointTransform.GetComponent<CheckpointCheck>();
-            checkpoint.SetTrackCheckpoints(this);
+            //checkpoint.SetTrackCheckpoints(this);
             checkpointList.Add(checkpoint);
         }
         TrackCheckpointsUI.SetActive(false);
     }
 
     /// <param 
-    ///name="checkpoint"> A Gameobject with a collider that the car passes through.
+    ///name="checkpoint"> A Gameobject with a collider and a checkpoint script, that the car passes through.
     ///</param>
 
     /// <summary>
@@ -44,9 +46,10 @@ public class TrackCheckpoints : MonoBehaviour
     /// </summary>
     public void ThroughCheckpoint(CheckpointCheck checkpoint)
     {
-        //This checks if the transform the player passed through is the nex on in the list, and other wise it displays a "missed checkpoit" message.
+        //This checks if the transform the player passed through is the next one in the list, and otherwise it displays a "missed checkpoit" message.
         if (checkpointList.IndexOf(checkpoint) == nextCheckpointIndex)
         {
+            //If the player passed the correct checkpoint the index increases by 1 aslong as its inside the bounds of the checkpointList
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Hide();
             nextCheckpointIndex = (nextCheckpointIndex + 1) % checkpointList.Count;
@@ -54,13 +57,14 @@ public class TrackCheckpoints : MonoBehaviour
         }
         else
         {
+            //if the player drove through the wrong checkpoint, the correct one is shown flashing and the "missed checkpoit" message is displayed
             TrackCheckpointsUI.SetActive(true);
 
             CheckpointCheck correctCheckpoint = checkpointList[nextCheckpointIndex];
             correctCheckpoint.Show();
         }
 
-        //This checks if the collider that the player passed through is the last one in the race, and if it is it displays the result display depending on witch type of race it was.
+        //This checks if the collider that the player passed through is the last one in the race, and if it is, it displays the result display depending on witch type of race it was.
         if (trackType == "circuit" && nextCheckpointIndex == 1)
         {
             if (numberOfLaps < laps)
@@ -92,7 +96,11 @@ public class TrackCheckpoints : MonoBehaviour
         }
     }
     /// <param 
-    ///name="checkpoint"> A Gameobject with a collider that either the opponent or player passes through.
+    ///name="checkpoint"> A Gameobject with a collider that either the opponent or player passes through. 
+    ///</param>
+
+    /// <param 
+    /// name="driver"> The one who passed the transform, either the player or opponent.
     ///</param>
 
     /// <summary>
@@ -103,7 +111,7 @@ public class TrackCheckpoints : MonoBehaviour
         //It gets the place of the checkpoint in the list
         int checkpointNumber = checkpointList.IndexOf(checkpoint);
 
-        //If the collider is the last one in the race and if the "driverThroughCheckpoint" variable is unchanged then the driver through the check point is the fist one through the checkpoint.
+        //If the collider is the last one in the race and if the "driverThroughCheckpoint" variable is unchanged since the start, then the driver through the check point is the fist one accrossthe finnish line, and is saved as the "driverThroughCheckpoint".
         if (trackType == "circuit" && numberOfLaps == laps && checkpointNumber == 0)
         {
             print("Last lap & checkpoint 1");

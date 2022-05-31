@@ -15,9 +15,7 @@ MonoBehaviour:
   carName: Mutshibishu Reo 9
   carDescription: A Japaniese pocket rocket with AWD
   carPrice: 35000
-  owned: 0
-  carModel: {fileID: 5860318582837158343, guid: c89f7146f5d28cc4a81c565439964504, type: 3}
-  carPaint: {fileID: 2100000, guid: ba133aa4ae6254c40a6c35878eb1807d, type: 2}
+  carModel: {fileID: 7599360128303536628, guid: 922db4b4aa3c41c40af7f479683d789d, type: 3}
   carMaterial:
   - {fileID: 2100000, guid: fdf0c4f7c3a6b2d44a88b3d279bf99f5, type: 2}
   - {fileID: 2100000, guid: bd07f1764c42760438c1a1c191632486, type: 2}

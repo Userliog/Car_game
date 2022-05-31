@@ -10,19 +10,23 @@ public class ScriptableObjectChanger : MonoBehaviour
     [Header("Display Scripts")]
     [SerializeField] private MapDisplay mapDisplay;
     [SerializeField] private CarDisplay carDisplay;
-    [SerializeField] private MapOptionsDisplay optionsDisplay;
     private int currentIndex;
 
     private void Awake()
     {
+        //This cycles through the "ChangeScriptableObject" function to display the fist map/car.
         ChangeScriptableObject(0);
     }
 
+    /// <param 
+    /// name="change"> Int: The amount to change the scriptableObjects index by.
+    /// </param>
     /// <summary>
-    ///  This class is used by the buttons on screen to change the scriptable object of either the mapDisplay or carDisplay script
+    ///  This function is used by the buttons on screen to change the scriptable object of either the mapDisplay or carDisplay script
     /// </summary>
     public void ChangeScriptableObject(int change)
     {
+        //Here it gets the scriptableObject based on the button clicks of the player, and makes sure the index doesn't exide the contents of the array.
         currentIndex += change;
         if (currentIndex < 0)
         {
@@ -32,8 +36,9 @@ public class ScriptableObjectChanger : MonoBehaviour
         {
             currentIndex = 0;
         }
-        //Here it gets the scriptableObject based on the button clicks of the player
+        
 
+        //This part checks if the scripts are avalible, and if they are they send the current scriptableObject to a function in that script.
         if (mapDisplay != null)
         {
             mapDisplay.DisplayMap((Map)ScriptableObjects[currentIndex]);
@@ -41,10 +46,10 @@ public class ScriptableObjectChanger : MonoBehaviour
 
         if (carDisplay != null)
         {
-            PlayerPrefs.SetInt("CarToLoad", currentIndex);
             //this saves the current car as a PlayerPrefs, witch can be saved and loaded in a diffrent unity scene
+            PlayerPrefs.SetInt("CarToLoad", currentIndex);
             carDisplay.DisplayCar((Car)ScriptableObjects[currentIndex]);
         }
-        //This part checks if one of the scripts are avalible, and if they are they send the current scriptableObject is sent to a class in that script.
+        
     }
 }

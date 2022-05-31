@@ -15,9 +15,7 @@ MonoBehaviour:
   carName: Fjord Caspian GT
   carDescription: A popular musclecar from america
   carPrice: 30000
-  owned: 0
-  carModel: {fileID: 674568856949969128, guid: 6d3f4af30d3eb1a4699cbe9be9cec223, type: 3}
-  carPaint: {fileID: 0}
+  carModel: {fileID: 808401642977610720, guid: 10d316f3b43f01845a7aff3e7108f620, type: 3}
   carMaterial:
   - {fileID: 2100000, guid: aaf3c242754fd5247ba5e1e445672bd7, type: 2}
   - {fileID: 2100000, guid: 50b77811c5b0b864c8388a5e6369fbfd, type: 2}

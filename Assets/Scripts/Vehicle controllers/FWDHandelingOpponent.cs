@@ -10,8 +10,6 @@ public class FWDHandelingOpponent : MonoBehaviour
     private List<Transform> nodes;
     private int currentNode = 0;
 
-    //private double speed;
-
     [Header("Constant values")]
     [SerializeField] private float EngineMax;
     [SerializeField] private float BrakeMax;
@@ -37,14 +35,15 @@ public class FWDHandelingOpponent : MonoBehaviour
     [SerializeField] public Transform com;
 
     /// <summary>
-    ///  This class setsup everything, and gets all requierd checkpoints and puts them in a list.
+    ///  This function setsup everything, and gets all requierd checkpoints and puts them in a list.
     /// </summary>
     void Start()
     {
+        //This changes the center of mass of the car
         RB = GetComponent<Rigidbody>();
         RB.centerOfMass = com.transform.localPosition;
-        //This changes the center of mass of the car
 
+        //This gets all pathTransforms and puts them in a list
         Transform[] pathTransforms = checkpoints.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
         for (int i = 1; i < pathTransforms.Length; i++)
@@ -54,9 +53,11 @@ public class FWDHandelingOpponent : MonoBehaviour
                 nodes.Add(pathTransforms[i]);
             }
         }
-        //This gets all checkpoints and puts them in a list
     }
 
+    /// <summary>
+    ///  This function calls all other functions.
+    /// </summary>
     void FixedUpdate()
     {
         Steering();
@@ -66,13 +67,14 @@ public class FWDHandelingOpponent : MonoBehaviour
     }
 
     /// <summary>
-    ///  This class acceleraits the car to top speed.
+    ///  This function acceleraits the car to top speed.
     /// </summary>
     private void Engine()
     {
         double speed = 3.14 * FRcollider.radius * FRcollider.rpm * 60 / 500;
         //this calculates the current wheelspeed of the car
 
+        //When the car reaches top speed you cant accelerate any more
         if (speed < MaxSpeed)
         {
             ApplyThrottle((currentEnginePower * 5) / 4);
@@ -83,8 +85,11 @@ public class FWDHandelingOpponent : MonoBehaviour
         }
     }
 
+    /// <param 
+    /// name="throttle"> Float: The amount of throttle.
+    /// </param>
     /// <summary>
-    ///  This class applies the motortorque to the front wheels.
+    ///  This function applies the motortorque to the front wheels.
     /// </summary>
     private void ApplyThrottle(float throttle)
     {
@@ -93,7 +98,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     }
 
     /// <summary>
-    ///  This class calculates the distance to the next checkpoint in the list, and if the car is close enoth to the checkpoint, it switches to the next one in the list.
+    ///  This function calculates the distance from the car to the next checkpoint in the list, and if the car is close enoth to the checkpoint, it switches to the next one in the list.
     /// </summary>
     private void CheckpointDistance()
     {
@@ -101,18 +106,18 @@ public class FWDHandelingOpponent : MonoBehaviour
         {
             if (currentNode == nodes.Count - 1)
             {
+                //if the car has reached the last checkpoint, the list will start over, so the car can drive multible laps.
                 currentNode = 0;
             }
             else
             {
-                //if the car has reached the last checkpoint, the list will restart, so that the car can drive multible laps.
                 currentNode++;
             }
         }
     }
 
     /// <summary>
-    ///  This class calculates how much the car needs to steer to reach the checkpoint.
+    ///  This function calculates how much the car needs to steer to reach the checkpoint.
     /// </summary>
     private void Steering()
     {
@@ -126,7 +131,7 @@ public class FWDHandelingOpponent : MonoBehaviour
     }
 
     /// <summary>
-    ///  This class calls another class to update each wheel, I chose to do it this way to reduce the amout of repedetive code.
+    ///  This function calls another function to update each wheel, I chose to do it this way to reduce the amout of repedetive code.
     /// </summary>
     private void UpdateWheels()
     {
@@ -136,21 +141,31 @@ public class FWDHandelingOpponent : MonoBehaviour
         UpdateSingelWheel(RRcollider, RR);
     }
 
+    /// <param 
+    /// name="WheelCollider"> WheelCollider: The wheel collider to base the new transform position of.
+    /// </param>
+    /// <param 
+    /// name="WheelTransform"> Transform: The wheel transform to uppdate its position.
+    /// </param>
     /// <summary>
-    ///  This class updates the look of the wheels, otherwise the wheels would stay in the same position relative to the car as from the begining.
+    ///  This function updates the look of the wheels, otherwise the wheels would stay in the same position relative to the car as from the begining.
     /// </summary>
     private void UpdateSingelWheel(WheelCollider WheelCollider, Transform WheelTransform)
     {
+        //First it gets the position and rotation of the wheel collider, and converts the values to be in the worldspace
         Vector3 pos = WheelTransform.position;
         Quaternion rot = WheelTransform.rotation;
         WheelCollider.GetWorldPose(out pos, out rot);
         rot = rot * Quaternion.Euler(new Vector3());
-        //First it gets the position and rotation of the wheel collider, and converts the values to be in the worldspace
+
+        //Second it applies these new values to the wheel transform to update the rotation and postion.
         WheelTransform.position = pos;
         WheelTransform.rotation = rot;
-        //Second it applies these new values to the 3d model to update the rotation and postion.
     }
 
+    /// <summary>
+    ///  This function makes it possible to start the car on demand by changing the power to the wheels from 0 to engine max.
+    /// </summary>
     public void StartCar()
     {
         currentEnginePower = EngineMax;

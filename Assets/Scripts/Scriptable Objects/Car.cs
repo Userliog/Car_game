@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class Car : ScriptableObject
 {
-    //Scriptable objects are used when 
     [Header("Description")]
     public string carName;
     public string carDescription;
@@ -13,12 +12,9 @@ public class Car : ScriptableObject
     [Header("Values")]
     public int carPrice;
 
-    public bool owned;
-
     [Header("3D Model")]
     public GameObject carModel;
 
     [Header("Paint")]
-    public Material carPaint;
     public List<Material> carMaterial;
 }

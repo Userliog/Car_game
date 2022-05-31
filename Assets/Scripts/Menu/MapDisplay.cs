@@ -16,20 +16,35 @@ public class MapDisplay : MonoBehaviour
     [SerializeField] private GameObject mapLapsHeader;
     [SerializeField] private Button playButton;
     private float timeTrialTime;
-    //private string mapType;
-    //private string sceneToLoad;
+    private int prizeMoney;
+    private string sceneToLoad;
+    private string trackType;
+    private string raceType;
     private int laps;
 
+    /// <param 
+    /// name="map"> Map: A scriptable object containing information about a level.
+    /// </param>
+
+    /// <summary>
+    ///  This function is called to change the text and images on screen to those of a scriptableobject.
+    /// </summary>
     public void DisplayMap(Map map)
     {
+        //Some values and texts are saved as variebles to be used in other functions
+        prizeMoney = int.Parse(map.prizeMoney);
+        sceneToLoad = map.sceneToLoad.name;
+        trackType = map.trackType;
+        raceType = map.raceType;
+
+        //This changes the text on screen to reflect the map shown
         mapName.text = map.mapName;
         mapdescription.text = map.mapDescrition;
         PrizeMoney.text = map.prizeMoney+" $";
-        
         mapImage.sprite = map.mapImage;
-        //mapType = map.mapType;
-        //sceneToLoad = map.sceneToLoad.name;
 
+
+        //Depending on the tracktype some text is removed or replaced
         if(map.trackType == "circuit")
         {
             mapLapsHeader.SetActive(true);
@@ -41,8 +56,8 @@ public class MapDisplay : MonoBehaviour
             mapLapsHeader.SetActive(false);
             laps = 1;
         }
-        
 
+        //Depending on the racetype some text is changed to work better.
         if (map.raceType == "vs")
         {
             PrizeRequierment.text = "Finish in 1st place";
@@ -56,30 +71,21 @@ public class MapDisplay : MonoBehaviour
         {
             PrizeRequierment.text = "Nothing";
         }
-        playButton.onClick.RemoveAllListeners();
-        playButton.onClick.AddListener(() => PlayerPrefs.SetString("RaceType", map.raceType));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetString("TrackType", map.trackType));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetString("MapToLoad", map.sceneToLoad.name));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetInt("MapLaps", map.laps));
-        playButton.onClick.AddListener(() => PlayerPrefs.SetInt("MapMoney", int.Parse(map.prizeMoney)));
     }
+
+    /// <summary>
+    ///  This function is called by a button, and saves the necessary information about the level to the next scene.
+    /// </summary>
     public void StartButton()
     {
+        //PlayerPrefs are used because they can store information across diffrent scenes
+
         PlayerPrefs.SetString("MapName", mapName.text);
-        //PlayerPrefs.SetString("MapMoney", PrizeMoney.text);
         PlayerPrefs.SetFloat("MapTime", timeTrialTime);
-        //PlayerPrefs.SetString("MapType", mapType);
-        //PlayerPrefs.SetString("MapToLoad", sceneToLoad);
-        //PlayerPrefs.SetInt("MapLaps", int.Parse(mapLaps.text));
-
         PlayerPrefs.SetInt("MapLaps", laps);
-
-
-        print("Name: "+PlayerPrefs.GetString("MapName"));
-        print("Money: "+PlayerPrefs.GetInt("MapMoney"));
-        print("Time: " + PlayerPrefs.GetFloat("MapTime"));
-        print("Type: " + PlayerPrefs.GetString("MapType"));
-        print("ToLoad: " + PlayerPrefs.GetString("MapToLoad"));
-        print("Laps: " + PlayerPrefs.GetInt("MapLaps"));
+        PlayerPrefs.SetInt("MapMoney", prizeMoney);
+        PlayerPrefs.SetString("MapToLoad", sceneToLoad);
+        PlayerPrefs.SetString("TrackType", trackType);
+        PlayerPrefs.SetString("RaceType", raceType);
     }
 }

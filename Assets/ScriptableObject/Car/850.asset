@@ -15,9 +15,7 @@ MonoBehaviour:
   carName: Volvent 580
   carDescription: A family grand tourer from the 90's
   carPrice: 5000
-  owned: 0
-  carModel: {fileID: 3769807999732229834, guid: e1482efaba5732a4db429cdd6ee0ddfb, type: 3}
-  carPaint: {fileID: 0}
+  carModel: {fileID: 3249812622887102075, guid: b5bce73916ad1ad46af3233e6194da89, type: 3}
   carMaterial:
   - {fileID: 2100000, guid: 2bff0cce6cf820e4a976d17a056ad504, type: 2}
   - {fileID: 2100000, guid: 0bec9bedd66abca4fb6a056ad2bbd7de, type: 2}
